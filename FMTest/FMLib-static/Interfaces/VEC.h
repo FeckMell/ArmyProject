@@ -39,7 +39,7 @@ public:
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
-template<class _T> std::vector<_T> VEC::RemoveCollisions(std::vector<_T> vec_, boost::function<bool(_T&, _T&)> f_)
+template<class _T> static std::vector<_T> VEC::RemoveCollisions(std::vector<_T> vec_, boost::function<bool(_T&, _T&)> f_)
 {
 	unsigned j;
 	for (unsigned i = 0; i < vec_.size() - 1; ++i)
@@ -54,7 +54,7 @@ template<class _T> std::vector<_T> VEC::RemoveCollisions(std::vector<_T> vec_, b
 	return vec_;
 }
 //*///-------------------------------------
-template<class _T> static void RemoveCollisions_M(std::vector<_T>& vec_, boost::function<bool(_T&, _T&)> f_)
+template<class _T> static void VEC::RemoveCollisions_M(std::vector<_T>& vec_, boost::function<bool(_T&, _T&)> f_)
 {
 	unsigned j;
 	for (unsigned i = 0; i < vec_.size() - 1; ++i)
@@ -69,7 +69,7 @@ template<class _T> static void RemoveCollisions_M(std::vector<_T>& vec_, boost::
 }
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
-template<class _T> static std::vector<_T> DelOnce(std::vector<_T> vec_, _T element_, boost::function<bool(_T&, _T&)> f_)
+template<class _T> static std::vector<_T> VEC::DelOnce(std::vector<_T> vec_, _T element_, boost::function<bool(_T&, _T&)> f_)
 {
 	for (unsigned i = 0; i < vec_.size();++i)
 	{
@@ -82,7 +82,7 @@ template<class _T> static std::vector<_T> DelOnce(std::vector<_T> vec_, _T eleme
 	return vec_;
 }
 //*///-------------------------------------
-template<class _T> static void DelOnce_M(std::vector<_T>& vec_, _T& element_, boost::function<bool(_T&, _T&)> f_)
+template<class _T> static void VEC::DelOnce_M(std::vector<_T>& vec_, _T& element_, boost::function<bool(_T&, _T&)> f_)
 {
 	for (unsigned i = 0; i < vec_.size(); ++i)
 	{
@@ -95,7 +95,7 @@ template<class _T> static void DelOnce_M(std::vector<_T>& vec_, _T& element_, bo
 }
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
-template<class _T> static std::vector<_T> DelALL(std::vector<_T> vec_, _T element_, boost::function<bool(_T&, _T&)> f_)
+template<class _T> static std::vector<_T> VEC::DelALL(std::vector<_T> vec_, _T element_, boost::function<bool(_T&, _T&)> f_)
 {
 	unsigned i = 0;
 	while (i < vec_.size())
@@ -106,7 +106,7 @@ template<class _T> static std::vector<_T> DelALL(std::vector<_T> vec_, _T elemen
 	return vec_;
 }
 //*///-------------------------------------
-template<class _T> static void DelAll_M(std::vector<_T>& vec_, _T& element_, boost::function<bool(_T&, _T&)> f_)
+template<class _T> static void VEC::DelALL_M(std::vector<_T>& vec_, _T& element_, boost::function<bool(_T&, _T&)> f_)
 {
 	unsigned i = 0;
 	while (i < vec_.size())

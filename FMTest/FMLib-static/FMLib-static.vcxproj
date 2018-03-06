@@ -80,9 +80,7 @@
     <ClInclude Include="Calculation\Math\Operation.h" />
     <ClInclude Include="Calculation\Math\RevPolNotation.h" />
     <ClInclude Include="CommonTypes\DataStorage\AnyWithType.h" />
-    <ClInclude Include="CommonTypes\DataStorage\StringWithType.h" />
     <ClInclude Include="CommonTypes\DataStorage\ValStoreLineT.h" />
-    <ClInclude Include="CommonTypes\DataStorage\ValStoreLineTnew.h" />
     <ClInclude Include="CommonTypes\DataStorage\ValStoreTree.h" />
     <ClInclude Include="CommonTypes\DataStorage\ValStoreTreeEntry.h" />
     <ClInclude Include="CommonTypes\Except.h" />
@@ -97,8 +95,8 @@
   <ItemGroup>
     <ClCompile Include="Calculation\Math\Operation.cpp" />
     <ClCompile Include="Calculation\Math\RevPolNotation.cpp" />
+    <ClCompile Include="Calculation\Math\RevPolNotation_Helper.cpp" />
     <ClCompile Include="CommonTypes\DataStorage\AnyWithType.cpp" />
-    <ClCompile Include="CommonTypes\DataStorage\StringWithType.cpp" />
     <ClCompile Include="CommonTypes\DataStorage\ValStoreTree.cpp" />
     <ClCompile Include="CommonTypes\DataStorage\ValStoreTreeEntry.cpp" />
     <ClCompile Include="CommonTypes\Except.cpp" />

@@ -95,6 +95,7 @@
     <ClCompile Include="test_CFG.cpp" />
     <ClCompile Include="test_Except.cpp" />
     <ClCompile Include="test_Operation.cpp" />
+    <ClCompile Include="test_RevPolNotation.cpp" />
     <ClCompile Include="test_STR.cpp" />
     <ClCompile Include="test_ValStoreLineT.cpp" />
     <ClCompile Include="Tools\Tools.cpp" />

@@ -2,7 +2,7 @@
 #include "CppUnitTest.h"
 #include "Tools\Tools.h"
 
-#include "CommonTypes\DataStorage\ValStoreLineTnew.h"
+#include "CommonTypes\DataStorage\ValStoreLineT.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std;

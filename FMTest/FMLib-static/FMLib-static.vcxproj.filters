@@ -28,15 +28,6 @@
     <ClInclude Include="CommonTypes\DataStorage\AnyWithType.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="CommonTypes\DataStorage\StringWithType.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="CommonTypes\DataStorage\ValStoreLineT.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="CommonTypes\DataStorage\ValStoreLineTnew.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
     <ClInclude Include="CommonTypes\DataStorage\ValStoreTree.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
@@ -67,6 +58,9 @@
     <ClInclude Include="Interfaces\VEC.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="CommonTypes\DataStorage\ValStoreLineT.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -76,9 +70,6 @@
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
     <ClCompile Include="CommonTypes\DataStorage\AnyWithType.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
-    <ClCompile Include="CommonTypes\DataStorage\StringWithType.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
     <ClCompile Include="CommonTypes\DataStorage\ValStoreTree.cpp">
@@ -103,6 +94,9 @@
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
     <ClCompile Include="Calculation\Math\RevPolNotation.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="Calculation\Math\RevPolNotation_Helper.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
   </ItemGroup>

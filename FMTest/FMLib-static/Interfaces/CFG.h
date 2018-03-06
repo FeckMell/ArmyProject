@@ -1,7 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "CommonTypes\Except.h"
-#include "CommonTypes\DataStorage\ValStoreLineTnew.h"
+#include "CommonTypes\DataStorage\ValStoreLineT.h"
 
 class CFG
 {

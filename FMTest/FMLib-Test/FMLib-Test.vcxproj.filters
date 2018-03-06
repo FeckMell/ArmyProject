@@ -47,5 +47,8 @@
     <ClCompile Include="test_ValStoreLineT.cpp">
       <Filter>CommonTypes\DataStorage</Filter>
     </ClCompile>
+    <ClCompile Include="test_RevPolNotation.cpp">
+      <Filter>Calculation</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
