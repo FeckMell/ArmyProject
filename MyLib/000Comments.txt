@@ -1,3 +1,17 @@
+2017.09.15
+*AnyWithType
+*StringWithType
+*LogicOperations
+*ValStoreTree
+	1) All comparisons with "" replaced with string.empty()
+*ValStoreLine
+*ValStoreLineT
+*STR
+	1) Added Split function.
+	2) All comparisons with "" replaced with string.empty()
+*CheckMethod attempt
+
+
 2017.09.4
 *LOG
 	1) Changed to use TreeVallStore

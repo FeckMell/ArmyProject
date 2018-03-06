@@ -38,7 +38,7 @@ private:
 	static SHP_IO thatIo;
 	static SHP_thread thatThread;
 	static ValStoreTree thatData;
-	static std::map<string,vector<boost::function<string()>>> thatFuncs;
+	static std::map<string,std::vector<boost::function<string()>>> thatFuncs;
 	//static std::vector<string> thatFileNames;
 	//static string thatLastDate;
 

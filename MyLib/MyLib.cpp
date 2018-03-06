@@ -9,10 +9,14 @@
 //#include "old_ValStoreTree.h"
 #include "ValStoreTreeEntry.h"
 #include "ValStoreTree.h"
+#include "LogicOperations.h"
+#include "ValStoreLine.h"
+#include "ValStoreLineT.h"
 
 using namespace std;
 void testVSTE();
 void testVST();
+
 
 int main()
 {
@@ -20,15 +24,10 @@ int main()
 	string exit;
 	
 	//CFG::Init("C:\\WORK\\MyLib\\Release\\fff.exe");
-	//map<string, string> m = { { "aaa", "def 1" }, { "aaa.aaa", "def 2" } };
 	//CFG::InitWithDefaults("C:\\WORK\\MyLib\\Release\\fff.exe", m);
-	//cout<<CFG::ToString();
-
 	//LOG::Init({"Log"});
 	//testVSTE();
-	//testVST();
-
-	
+	//testVST();	
 
 
 	cin >> exit;

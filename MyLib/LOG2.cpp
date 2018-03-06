@@ -80,7 +80,7 @@ void LOG2::SetFuncs()
 }
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
-void LOG2::OpenFiles(bool opened_ = true)
+void LOG2::OpenFiles(bool opened_)
 {
 	thatData.SetVal("LastDate", to_iso_extended_string(boost::gregorian::day_clock::universal_day()));
 	string s = "";

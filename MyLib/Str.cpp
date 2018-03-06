@@ -194,4 +194,26 @@ string STR::GenMultTimes(string generator_, unsigned times_)
 }
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
+pair<string, string> STR::Split(string target_, string delimeter_, bool include_)
+{
+	if ( target_.empty() ) return {"",""};
+	if ( delimeter_.empty() ) return { target_, "" };
+
+	auto fd = target_.find(delimeter_);
+	if ( fd == string::npos ) return { target_, "" };
+
+	pair<string, string> result;
+	if ( include_ )
+	{
+		result = { STR::SubStrFromTo(target_, 0, fd + delimeter_.length()), STR::SubStrFromTo(target_, fd + delimeter_.length(), string::npos) };
+		return result;
+	}
+	else
+	{
+		result = { STR::SubStrFromTo(target_, 0, fd), STR::SubStrFromTo(target_, fd + delimeter_.length(), string::npos) };
+		return result;
+	}
+}
+//*///------------------------------------------------------------------------------------------
+//*///------------------------------------------------------------------------------------------
 

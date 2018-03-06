@@ -71,6 +71,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -78,36 +79,53 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AnyWithType.h" />
     <ClInclude Include="CFG.h" />
+    <ClInclude Include="CheckMethod.h" />
     <ClInclude Include="LOG.h" />
     <ClInclude Include="LOG2.h" />
+    <ClInclude Include="LogicOperations.h" />
+    <ClInclude Include="MathOperations.h" />
+    <ClInclude Include="RevPolNotation.h" />
     <ClInclude Include="SocketFuncs.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Str.h" />
+    <ClInclude Include="StringWithType.h" />
     <ClInclude Include="TCPSocket.h" />
     <ClInclude Include="TCPSocketBuf.h" />
     <ClInclude Include="UDPSocket.h" />
     <ClInclude Include="UDPSocketBuf.h" />
+    <ClInclude Include="ValStoreLine.h" />
+    <ClInclude Include="ValStoreLineT.h" />
     <ClInclude Include="ValStoreTree.h" />
     <ClInclude Include="ValStoreTreeEntry.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AnyWithType.cpp" />
     <ClCompile Include="CFG.cpp" />
     <ClCompile Include="LOG.cpp" />
     <ClCompile Include="LOG2.cpp" />
+    <ClCompile Include="LogicOperations.cpp" />
+    <ClCompile Include="MathOperations.cpp" />
     <ClCompile Include="MyLib.cpp" />
+    <ClCompile Include="RevPolNotation.cpp" />
     <ClCompile Include="SocketFuncs.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Str.cpp" />
+    <ClCompile Include="StringWithType.cpp" />
     <ClCompile Include="TCPSocket.cpp" />
     <ClCompile Include="TCPSocketBuf.cpp" />
     <ClCompile Include="UDPSocket.cpp" />
     <ClCompile Include="UDPSocketBuf.cpp" />
+    <ClCompile Include="ValStoreLine.cpp" />
     <ClCompile Include="ValStoreTree.cpp" />
     <ClCompile Include="ValStoreTreeEntry.cpp" />
   </ItemGroup>

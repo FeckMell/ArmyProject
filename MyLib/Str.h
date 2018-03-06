@@ -25,7 +25,11 @@ public:
 	if @begin_ or @end_ are empty strings return empty vector
 	if in iteration @end_ not found return vector without substring(@begin_, string::npos)*/
 	static std::vector<std::string> StrInBetweenVec(std::string target_, std::string begin_, std::string end_);
-
+	/*Return pair<string,string> consists of substrings before and after @delimeter
+	if @target empty strings return pair<"","">
+	if @delimeter not found return pair<@target,"">
+	if @include is true - return pair<(before + @delimeter), after>*/
+	static std::pair<std::string, std::string> Split(std::string target_, std::string delimeter_, bool include_);
 
 
 	/*Return string where first entry of @old_ is replaced by @new_ in @target_

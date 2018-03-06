@@ -25,6 +25,12 @@
     <Filter Include="ValueStore">
       <UniqueIdentifier>{43ae55f5-1630-4a40-be61-51ec78e3013c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MathExp">
+      <UniqueIdentifier>{12482c8f-4e48-4f74-83c1-3c0271b82624}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommonTypes">
+      <UniqueIdentifier>{3db867fa-cf69-4caf-a9eb-0347af0879ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyLib.cpp">
@@ -66,6 +72,24 @@
     <ClCompile Include="LOG2.cpp">
       <Filter>Logger</Filter>
     </ClCompile>
+    <ClCompile Include="RevPolNotation.cpp">
+      <Filter>MathExp</Filter>
+    </ClCompile>
+    <ClCompile Include="MathOperations.cpp">
+      <Filter>MathExp</Filter>
+    </ClCompile>
+    <ClCompile Include="LogicOperations.cpp">
+      <Filter>MathExp</Filter>
+    </ClCompile>
+    <ClCompile Include="ValStoreLine.cpp">
+      <Filter>ValueStore</Filter>
+    </ClCompile>
+    <ClCompile Include="StringWithType.cpp">
+      <Filter>CommonTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="AnyWithType.cpp">
+      <Filter>CommonTypes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -103,6 +127,30 @@
     </ClInclude>
     <ClInclude Include="LOG2.h">
       <Filter>Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="RevPolNotation.h">
+      <Filter>MathExp</Filter>
+    </ClInclude>
+    <ClInclude Include="MathOperations.h">
+      <Filter>MathExp</Filter>
+    </ClInclude>
+    <ClInclude Include="LogicOperations.h">
+      <Filter>MathExp</Filter>
+    </ClInclude>
+    <ClInclude Include="ValStoreLine.h">
+      <Filter>ValueStore</Filter>
+    </ClInclude>
+    <ClInclude Include="StringWithType.h">
+      <Filter>CommonTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="AnyWithType.h">
+      <Filter>CommonTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValStoreLineT.h">
+      <Filter>ValueStore</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckMethod.h">
+      <Filter>CommonTypes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
