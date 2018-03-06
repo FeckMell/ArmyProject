@@ -2,7 +2,7 @@
 #include "CFG.h"
 
 using namespace std;
-ValStoreTree CFG::thatData;
+ValStoreLine CFG::thatData;
 
 string CFG::Val(string name_)
 {
@@ -26,7 +26,6 @@ string CFG::ToString()
 {
 	string result = "\nConfiguration params:\n";
 	result += thatData.ToString();
-	cout << "\nDebug:" << thatData.PrintAll();
 	return result;
 }
 //*///------------------------------------------------------------------------------------------

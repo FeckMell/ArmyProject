@@ -1,7 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "CFG.h"
-#include "ValStoreTree.h"
+#include "ValStoreLine.h"
 
 class LOG2
 {
@@ -37,7 +37,7 @@ private:
 	static SHP_Work thatWork;
 	static SHP_IO thatIo;
 	static SHP_thread thatThread;
-	static ValStoreTree thatData;
+	static ValStoreLine thatData;
 	static std::map<string,std::vector<boost::function<string()>>> thatFuncs;
 	//static std::vector<string> thatFileNames;
 	//static string thatLastDate;

@@ -90,6 +90,15 @@
     <ClCompile Include="AnyWithType.cpp">
       <Filter>CommonTypes</Filter>
     </ClCompile>
+    <ClCompile Include="Except.cpp">
+      <Filter>CommonTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Evulation.cpp">
+      <Filter>MathExp</Filter>
+    </ClCompile>
+    <ClCompile Include="Operation.cpp">
+      <Filter>MathExp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -152,8 +161,21 @@
     <ClInclude Include="CheckMethod.h">
       <Filter>CommonTypes</Filter>
     </ClInclude>
+    <ClInclude Include="Except.h">
+      <Filter>CommonTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Evulation3.h">
+      <Filter>MathExp</Filter>
+    </ClInclude>
+    <ClInclude Include="Evulation.h">
+      <Filter>MathExp</Filter>
+    </ClInclude>
+    <ClInclude Include="Operation.h">
+      <Filter>MathExp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="000Comments.txt" />
+    <Text Include="000Plans.txt" />
   </ItemGroup>
 </Project>

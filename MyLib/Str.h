@@ -1,5 +1,7 @@
 #pragma once
 #include "stdafx.h"
+#include "Except.h"
+
 class STR
 {
 public:
@@ -84,6 +86,14 @@ public:
 
 	/*Return true if string is numeric, return false else*/
 	static bool IsNumeric(std::string str_);
+	/*Return bool if string is int, else throw Except*/
+	static bool ToBool(std::string str_);
+	/*Return int if string is int, else throw Except*/
+	static int ToInt(std::string str_);
+	/*Return unsigned if string is int, else throw Except*/
+	static unsigned ToUnsigned(std::string str_);
+	/*Return double if string is int, else throw Except*/
+	static double ToDouble(std::string str_);
 
 
 private:

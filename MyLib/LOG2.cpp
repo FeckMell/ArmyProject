@@ -7,7 +7,7 @@ map<string, ofstream> LOG2::thatFiles;
 LOG2::SHP_Work LOG2::thatWork;
 LOG2::SHP_IO LOG2::thatIo;
 LOG2::SHP_thread LOG2::thatThread;
-ValStoreTree LOG2::thatData;
+ValStoreLine LOG2::thatData;
 map<string, vector<boost::function<string()>>> LOG2::thatFuncs;
 
 void LOG2::Init(vector<string> filenames_, SHP_IO io_)

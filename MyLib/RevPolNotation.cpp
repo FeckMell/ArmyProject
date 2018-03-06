@@ -47,6 +47,23 @@ void RPN::SetExpression(string expr_)
 }
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
+AnyWithType RPN::Evulate(boost::function<AnyWithType(string)> get_)
+{
+	deque<AnyWithType> expr = thatExpr;
+	stack<AnyWithType> tmp_sta;
+	AnyWithType tmp_v;
+
+	while ( !expr.empty() )
+	{
+		tmp_v = expr.front();
+		if ( tmp_v.TypeU() == AnyWithType::STRING )
+		{
+			//
+		}
+	}
+}
+//*///------------------------------------------------------------------------------------------
+//*///------------------------------------------------------------------------------------------
 void RPN::Parse()
 {
 	string expr = thatExprStr;
@@ -64,7 +81,7 @@ void RPN::Parse()
 	sort(places.begin(), places.end(),
 		[](pair<size_t, AnyWithType> a, pair<size_t, AnyWithType> b){ return a.first < b.first; });
 	RemoveCollisions(&places);
-	TestPrint(places);///
+	//TestPrint(places);///
 
 	ParseExpr(places);
 }
@@ -156,7 +173,7 @@ void RPN::ParseExpr(std::vector<std::pair<size_t, AnyWithType>> v_)
 	tmp_str = STR::ReplaceInStrAll(tmp_str, " ", "");
 	if ( !tmp_str.empty() ) thatExpr.push_back(AnyWithType(tmp_str, "string"));
 
-	/*extract all opers from tmp_que*/
+	/*extract all opers from tmp_sta*/
 	while ( !tmp_sta.empty() )
 	{
 		thatExpr.push_back(tmp_sta.top());
@@ -167,19 +184,19 @@ void RPN::ParseExpr(std::vector<std::pair<size_t, AnyWithType>> v_)
 //*///------------------------------------------------------------------------------------------
 void RPN::ParseExprLogic(AnyWithType cur_oper_, stack<AnyWithType>& sta_)
 {
-	/* if que is empty - just push operation*/
+	/* if stack is empty - just push operation*/
 	if ( sta_.empty() ) { sta_.push(cur_oper_); return; }
 	LogicOperations tmp_oper_1;
 	LogicOperations tmp_oper_2 = boost::any_cast<LogicOperations>(cur_oper_.Data());
 
-	/* if operation is "(" just push in que*/
+	/* if operation is "(" just push in stack*/
 	if ( tmp_oper_2.Symbol() == "(" )
 	{ 
 		sta_.push(cur_oper_);
 		return;
 	}
 
-	/*if oper if ")" then extract all opers from que until oper "("*/
+	/*if oper if ")" then extract all opers from stack until oper "("*/
 	if ( tmp_oper_2.Symbol() == ")" )
 	{
 		while ( 1 )
@@ -202,7 +219,7 @@ void RPN::ParseExprLogic(AnyWithType cur_oper_, stack<AnyWithType>& sta_)
 	/*check priority*/
 	tmp_oper_1 = boost::any_cast<LogicOperations>(sta_.top().Data());
 
-	/*if priority in que is less than current, then push in que*/
+	/*if priority in stack is less than current, then push in stack*/
 	if ( tmp_oper_1.Priority() < tmp_oper_2.Priority() ) 
 	{ 
 		sta_.push(cur_oper_);
@@ -212,7 +229,7 @@ void RPN::ParseExprLogic(AnyWithType cur_oper_, stack<AnyWithType>& sta_)
 	{
 		while ( 1 )
 		{
-			/*extract opers until que top priority is less than current*/
+			/*extract opers until stack top priority is less than current*/
 			tmp_oper_1 = boost::any_cast<LogicOperations>(sta_.top().Data());
 			if ( tmp_oper_1.Priority() >= tmp_oper_2.Priority() )
 			{
@@ -225,7 +242,7 @@ void RPN::ParseExprLogic(AnyWithType cur_oper_, stack<AnyWithType>& sta_)
 				break;
 			}
 
-			/*if que empty - just push*/
+			/*if stack empty - just push*/
 			if ( sta_.empty() )
 			{
 				sta_.push(cur_oper_);

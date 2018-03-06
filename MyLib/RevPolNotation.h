@@ -33,12 +33,13 @@ public:
 	
 	static void Init();
 	static void SetOperationAlphabet(std::map<string, AnyWithType> oper_alphabet_, unsigned mode_);
+	
 	void TestPrint(std::vector<std::pair<size_t, AnyWithType>>);//
 	void TestPrint2();///
 
-
 	RevPolNotation(string expr_);
 	void SetExpression(string expr_);
+	AnyWithType Evulate(boost::function<AnyWithType(string)> get_);
 	
 
 	RevPolNotation() {}

@@ -17,7 +17,7 @@ private:
 public:
 
 	string ToString();
-	string PrintAll();
+	//string PrintAll();
 	ValStoreLine() {}
 
 	string Val(string name_);

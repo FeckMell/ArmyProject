@@ -1,0 +1,3 @@
+2017.09.25
+1) Cripto: cript and hash
+2) Filesystem: find files, show files in specific folder, copy, create, delete. File and folder info: name, date, rights

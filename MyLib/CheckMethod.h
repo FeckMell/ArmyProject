@@ -37,10 +37,10 @@ template<class T> struct Test_Foo<T, true>
 	static void foo(const T &t) { cout << "Exists"; }
 };
 
-	template<class T> struct Test_Foo<T, false>
-	{
-		static void foo(const T &t) { cout << "Nothing"; }
-	};
+template<class T> struct Test_Foo<T, false>
+{
+	static void foo(const T &t) { cout << "Nothing"; }
+};
 
 /*
 int main()

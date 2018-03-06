@@ -6,20 +6,24 @@ std::map<std::string, unsigned> AnyWithType::FromStrToUns = {
 	{ "NONE", AnyWithType::NONE },
 	{ "BOOL", AnyWithType::BOOL },
 	{ "INT", AnyWithType::INT },
+	{ "DOUBLE", AnyWithType::DOUBLE },
 	{ "STRING", AnyWithType::STRING },
 	{ "none", AnyWithType::NONE },
 	{ "bool", AnyWithType::BOOL },
 	{ "int", AnyWithType::INT },
+	{ "double", AnyWithType::DOUBLE },
 	{ "string", AnyWithType::STRING },
 	{ "None", AnyWithType::NONE },
 	{ "Bool", AnyWithType::BOOL },
 	{ "Int", AnyWithType::INT },
+	{ "Double", AnyWithType::DOUBLE },
 	{ "String", AnyWithType::STRING }
 };
 std::map<unsigned, std::string> AnyWithType::FromUnsToStr = {
 	{ AnyWithType::NONE, "NONE" },
 	{ AnyWithType::BOOL, "BOOL" },
 	{ AnyWithType::INT, "INT" },
+	{ AnyWithType::DOUBLE, "DOUBLE" },
 	{ AnyWithType::STRING, "STRING" },
 	{ AnyWithType::OTHER, "OTHER" }
 };

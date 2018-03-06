@@ -87,10 +87,14 @@
     <ClInclude Include="AnyWithType.h" />
     <ClInclude Include="CFG.h" />
     <ClInclude Include="CheckMethod.h" />
+    <ClInclude Include="Evulation.h" />
+    <ClInclude Include="Evulation3.h" />
+    <ClInclude Include="Except.h" />
     <ClInclude Include="LOG.h" />
     <ClInclude Include="LOG2.h" />
     <ClInclude Include="LogicOperations.h" />
     <ClInclude Include="MathOperations.h" />
+    <ClInclude Include="Operation.h" />
     <ClInclude Include="RevPolNotation.h" />
     <ClInclude Include="SocketFuncs.h" />
     <ClInclude Include="stdafx.h" />
@@ -108,11 +112,14 @@
   <ItemGroup>
     <ClCompile Include="AnyWithType.cpp" />
     <ClCompile Include="CFG.cpp" />
+    <ClCompile Include="Evulation.cpp" />
+    <ClCompile Include="Except.cpp" />
     <ClCompile Include="LOG.cpp" />
     <ClCompile Include="LOG2.cpp" />
     <ClCompile Include="LogicOperations.cpp" />
     <ClCompile Include="MathOperations.cpp" />
     <ClCompile Include="MyLib.cpp" />
+    <ClCompile Include="Operation.cpp" />
     <ClCompile Include="RevPolNotation.cpp" />
     <ClCompile Include="SocketFuncs.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -131,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="000Comments.txt" />
+    <Text Include="000Plans.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

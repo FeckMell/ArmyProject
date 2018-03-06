@@ -13,7 +13,7 @@ private:
 
 public:
 
-	enum TypeList { NONE, BOOL, INT, STRING, OTHER };
+	enum TypeList { NONE, BOOL, INT, STRING, DOUBLE, OTHER };
 
 	AnyWithType(boost::any data_, std::string type_);
 	AnyWithType(boost::any data_, unsigned type_);

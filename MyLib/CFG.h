@@ -1,6 +1,6 @@
 #pragma once
 #include "stdafx.h"
-#include "ValStoreTree.h"
+#include "ValStoreLine.h"
 
 class CFG
 {
@@ -15,7 +15,7 @@ private:
 	static void ParsePath();
 	static void Parse();
 
-	static ValStoreTree thatData;
+	static ValStoreLine thatData;
 
 public:
 
