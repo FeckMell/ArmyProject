@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="MAIN">
+      <UniqueIdentifier>{1acd7546-7d1d-4ca6-a64a-a181a17438dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="String">
+      <UniqueIdentifier>{8a04e65a-eb02-40d8-bfa6-b814a65850ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CFG">
+      <UniqueIdentifier>{8c1c47cd-d0fb-448f-ad07-8ab3e53734d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UDPSocket">
+      <UniqueIdentifier>{9df4fde7-a708-4174-97f9-2a81e7eabfa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SocketFuncs">
+      <UniqueIdentifier>{3993f008-82fc-4656-9a58-6c93c93cf40b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TCPSocket">
+      <UniqueIdentifier>{669572f7-c6dc-49da-bb6e-b4482d486489}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logger">
+      <UniqueIdentifier>{76fc1542-6d84-4895-9c93-2989a5eeaff7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ValueStore">
+      <UniqueIdentifier>{43ae55f5-1630-4a40-be61-51ec78e3013c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MyLib.cpp">
+      <Filter>MAIN</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>MAIN</Filter>
+    </ClCompile>
+    <ClCompile Include="Str.cpp">
+      <Filter>String</Filter>
+    </ClCompile>
+    <ClCompile Include="CFG.cpp">
+      <Filter>CFG</Filter>
+    </ClCompile>
+    <ClCompile Include="UDPSocket.cpp">
+      <Filter>UDPSocket</Filter>
+    </ClCompile>
+    <ClCompile Include="UDPSocketBuf.cpp">
+      <Filter>UDPSocket</Filter>
+    </ClCompile>
+    <ClCompile Include="SocketFuncs.cpp">
+      <Filter>SocketFuncs</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPSocket.cpp">
+      <Filter>TCPSocket</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPSocketBuf.cpp">
+      <Filter>TCPSocket</Filter>
+    </ClCompile>
+    <ClCompile Include="LOG.cpp">
+      <Filter>Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="ValStoreTree.cpp">
+      <Filter>ValueStore</Filter>
+    </ClCompile>
+    <ClCompile Include="ValStoreTreeEntry.cpp">
+      <Filter>ValueStore</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>MAIN</Filter>
+    </ClInclude>
+    <ClInclude Include="Str.h">
+      <Filter>String</Filter>
+    </ClInclude>
+    <ClInclude Include="CFG.h">
+      <Filter>CFG</Filter>
+    </ClInclude>
+    <ClInclude Include="UDPSocket.h">
+      <Filter>UDPSocket</Filter>
+    </ClInclude>
+    <ClInclude Include="UDPSocketBuf.h">
+      <Filter>UDPSocket</Filter>
+    </ClInclude>
+    <ClInclude Include="SocketFuncs.h">
+      <Filter>SocketFuncs</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPSocket.h">
+      <Filter>TCPSocket</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPSocketBuf.h">
+      <Filter>TCPSocket</Filter>
+    </ClInclude>
+    <ClInclude Include="LOG.h">
+      <Filter>Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="ValStoreTree.h">
+      <Filter>ValueStore</Filter>
+    </ClInclude>
+    <ClInclude Include="ValStoreTreeEntry.h">
+      <Filter>ValueStore</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
