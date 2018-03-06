@@ -2,7 +2,7 @@
 #include "CppUnitTest.h"
 #include "Tools\Tools.h"
 
-#include "CommonTypes\ValStoreLineT.h"
+#include "CommonTypes\DataStorage\ValStoreLineTnew.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std;
@@ -15,20 +15,20 @@ namespace FMTest
 
 		/*TEST_METHOD(SelfTest)
 		{
-		auto v = Tools::ReadTestData("../FMTest/TestData/STR/StrInBetween.txt", 4);
+		auto v = Tools::ReadTestData("../FMLib-Test/TestData/STR/StrInBetween.txt", 4);
 		}			*/
 		//*///------------------------------------------------------------------------------------------
 		//*///------------------------------------------------------------------------------------------
 		TEST_METHOD(Constructor)
 		{
-			string test_file = "../FMTest/TestData/ValStoreLineT/Constructor.txt";
+			string test_file = "../FMLib-Test/TestData/ValStoreLineT/Constructor.txt";
 			auto test_data = Tools::ReadTestData(test_file, 4);
 		}
 		//*///------------------------------------------------------------------------------------------
 		//*///------------------------------------------------------------------------------------------
 		TEST_METHOD(SetVal)
 		{
-			string test_file = "../FMTest/TestData/ValStoreLineT/SetVal.txt";
+			string test_file = "../FMLib-Test/TestData/ValStoreLineT/SetVal.txt";
 			auto test_data = Tools::ReadTestData(test_file, 4);
 			for (unsigned j = 0; j < test_data.size(); ++j)
 			{
@@ -49,7 +49,7 @@ namespace FMTest
 		//*///------------------------------------------------------------------------------------------
 		TEST_METHOD(DelVal)
 		{
-			string test_file = "../FMTest/TestData/ValStoreLineT/DelVal.txt";
+			string test_file = "../FMLib-Test/TestData/ValStoreLineT/DelVal.txt";
 			auto test_data = Tools::ReadTestData(test_file, 5);
 			for (unsigned j = 0; j < test_data.size(); ++j)
 			{
@@ -72,7 +72,7 @@ namespace FMTest
 		//*///------------------------------------------------------------------------------------------
 		TEST_METHOD(ValSubTree)
 		{
-			string test_file = "../FMTest/TestData/ValStoreLineT/ValSubTree.txt";
+			string test_file = "../FMLib-Test/TestData/ValStoreLineT/ValSubTree.txt";
 			auto test_data = Tools::ReadTestData(test_file, 5);
 			for (unsigned j = 0; j < test_data.size(); ++j)
 			{
@@ -98,7 +98,7 @@ namespace FMTest
 		//*///------------------------------------------------------------------------------------------
 		TEST_METHOD(DelValSubTree)
 		{
-			string test_file = "../FMTest/TestData/ValStoreLineT/DelValSubTree.txt";
+			string test_file = "../FMLib-Test/TestData/ValStoreLineT/DelValSubTree.txt";
 			auto test_data = Tools::ReadTestData(test_file, 5);
 			for (unsigned j = 0; j < test_data.size(); ++j)
 			{
@@ -123,9 +123,9 @@ namespace FMTest
 		}
 		//*///------------------------------------------------------------------------------------------
 		//*///------------------------------------------------------------------------------------------
-		TEST_METHOD(SetValSubTree)
+		TEST_METHOD(SetValSubTree_Store)
 		{
-			string test_file = "../FMTest/TestData/ValStoreLineT/SetValSubTree.txt";
+			string test_file = "../FMLib-Test/TestData/ValStoreLineT/SetValSubTree.txt";
 			auto test_data = Tools::ReadTestData(test_file, 7);
 			for (unsigned j = 0; j < test_data.size(); ++j)
 			{
@@ -155,6 +155,98 @@ namespace FMTest
 		}
 		//*///------------------------------------------------------------------------------------------
 		//*///------------------------------------------------------------------------------------------
+		TEST_METHOD(NodesNamesAll)
+		{
+			string test_file = "../FMLib-Test/TestData/ValStoreLineT/NodesNamesAll.txt";
+			auto test_data = Tools::ReadTestData(test_file, 4);
+			for (unsigned j = 0; j < test_data.size(); ++j)
+			{
+				vector<string> names_in = STR::StrToVec(test_data[j][0], "#");
+				vector<string> values_in = STR::StrToVec(test_data[j][1], "#");
+				string name_cut = test_data[j][2];
+				vector<string> names_out = STR::StrToVec(test_data[j][3], "#");
+
+				Assert::AreEqual(names_in.size(), values_in.size(), Tools::ToWString("Error in file: sizes IN are different!").c_str());
+			
+				ValStoreLineT<string> V;
+				for (unsigned i = 0; i < names_in.size(); ++i) V.SetVal(names_in[i], values_in[i]);
+				auto result = V.NodesNamesAll(name_cut);
+
+				Assert::AreEqual(result.size(), names_out.size(),
+					Tools::ToWString("Sizes of result and expected are different.").c_str());
+
+				vector<string> res;
+				size_t sz;
+				while (!result.empty())
+				{
+					sz = result.size();
+					for (unsigned i = 0; i < names_out.size(); ++i)
+					{
+						if (result.back() == names_out[i])
+						{
+							result.pop_back();
+							break;
+						}
+					}
+					if (sz == result.size())
+					{
+						res.push_back(result.back());
+						result.pop_back();
+					}
+				}	
+				;
+				Assert::AreEqual(0, int(res.size()));
+			}
+		}
+		//*///------------------------------------------------------------------------------------------
+		//*///------------------------------------------------------------------------------------------
+		TEST_METHOD(NodesNamesChild)
+		{
+			string test_file = "../FMLib-Test/TestData/ValStoreLineT/NodesNamesChild.txt";
+			auto test_data = Tools::ReadTestData(test_file, 4);
+			for (unsigned j = 0; j < test_data.size(); ++j)
+			{
+				vector<string> names_in = STR::StrToVec(test_data[j][0], "#");
+				vector<string> values_in = STR::StrToVec(test_data[j][1], "#");
+				string name_cut = test_data[j][2];
+				vector<string> names_out = STR::StrToVec(test_data[j][3], "#");
+
+				Assert::AreEqual(names_in.size(), values_in.size(), Tools::ToWString("Error in file: sizes IN are different!").c_str());
+
+				ValStoreLineT<string> V;
+				for (unsigned i = 0; i < names_in.size(); ++i) V.SetVal(names_in[i], values_in[i]);
+				auto result = V.NodesNamesChild(name_cut);
+
+				Assert::AreEqual(result.size(), names_out.size(),
+					Tools::ToWString("Sizes of result and expected are different.").c_str());
+
+				vector<string> res;
+				size_t sz;
+				while (!result.empty())
+				{
+					sz = result.size();
+					for (unsigned i = 0; i < names_out.size(); ++i)
+					{
+						if (result.back() == names_out[i])
+						{
+							result.pop_back();
+							break;
+						}
+					}
+					if (sz == result.size())
+					{
+						res.push_back(result.back());
+						result.pop_back();
+					}
+				}
+				;
+				Assert::AreEqual(0, int(res.size()));
+			}
+		}
+		//*///------------------------------------------------------------------------------------------
+		//*///------------------------------------------------------------------------------------------
+		//TEST_METHOD(IsFinal)
+		//TEST_METHOD(SetValSubTree_Map);
 		//*///------------------------------------------------------------------------------------------
 		//*///------------------------------------------------------------------------------------------
 	};

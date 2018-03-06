@@ -1,0 +1,17 @@
+2017.11.14
+*VEC added
+*STR 
+	1) Defined ***_M methods
+*RevPolNotation
+	1) Rewriten
+	2) Finished parsing
+*CFG
+	1) Rewriten
+*ValStoreLineTnew
+	1) Added switch by preprocessor between throwing exceptions and returning default value
+
+2017.11.9
+*ValStoreLineTnew
+	1) Rewriten methods
+	2) Vector persists
+	3) Throw exception

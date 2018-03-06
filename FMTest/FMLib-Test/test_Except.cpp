@@ -15,13 +15,13 @@ namespace FMTest
 
 		/*TEST_METHOD(SelfTest)
 		{
-		auto v = Tools::ReadTestData("../FMTest/TestData/STR/StrInBetween.txt", 4);
+		auto v = Tools::ReadTestData("../FMLib-Test/TestData/STR/StrInBetween.txt", 4);
 		}			*/
 		//*///------------------------------------------------------------------------------------------
 		//*///------------------------------------------------------------------------------------------
 		TEST_METHOD(Except_)
 		{
-			string test_file = "../FMTest/TestData/Except/test1.txt";
+			string test_file = "../FMLib-Test/TestData/Except/test1.txt";
 			auto test_data = Tools::ReadTestData(test_file, 4);
 			unsigned i = 0;
 			//Finish read from file and check result 

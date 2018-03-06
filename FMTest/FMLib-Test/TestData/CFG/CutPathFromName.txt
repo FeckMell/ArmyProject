@@ -1,0 +1,8 @@
+*c:\work\fmlib\fmlib-static\calculation\math\operation.cpp
+*c:/work/fmlib/fmlib-static/calculation/math#operation.cpp
+
+*c:/work/fmlib/fmlib-static/calculation/math/operation.cpp
+*c:/work/fmlib/fmlib-static/calculation/math#operation.cpp
+
+*c:/work/fmlib/fmlib-static/calculation/math/
+*c:/work/fmlib/fmlib-static/calculation/math#

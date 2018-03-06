@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include "targetver.h"
+#include <SDKDDKVer.h>
 #define _CRT_SECURE_NO_WARNINGS
 
 // Заголовки CppUnitTest

@@ -14,13 +14,13 @@ namespace FMTest
 		
 		/*TEST_METHOD(SelfTest)
 		{
-			auto v = Tools::ReadTestData("../FMTest/TestData/STR/StrInBetween.txt", 4);
+			auto v = Tools::ReadTestData("../FMLib-Test/TestData/STR/StrInBetween.txt", 4);
 		}			*/
 		//*///------------------------------------------------------------------------------------------
 		//*///------------------------------------------------------------------------------------------
 		TEST_METHOD(StrBetween)
 		{
-			string test_file = "../FMTest/TestData/STR/StrBetween.txt";
+			string test_file = "../FMLib-Test/TestData/STR/StrBetween.txt";
 			auto test_data = Tools::ReadTestData(test_file, 4);
 			for (auto& e : test_data)
 			{
@@ -32,7 +32,7 @@ namespace FMTest
 		//*///------------------------------------------------------------------------------------------
 		TEST_METHOD(StrInBetween)
 		{
-			string test_file = "../FMTest/TestData/STR/StrInBetween.txt";
+			string test_file = "../FMLib-Test/TestData/STR/StrInBetween.txt";
 			auto test_data = Tools::ReadTestData(test_file, 4);
 			for (auto& e : test_data)
 			{
@@ -44,7 +44,7 @@ namespace FMTest
 		//*///------------------------------------------------------------------------------------------
 		TEST_METHOD(StrBetweenVec)
 		{
-			string test_file = "../FMTest/TestData/STR/StrBetweenVec.txt";
+			string test_file = "../FMLib-Test/TestData/STR/StrBetweenVec.txt";
 			auto test_data = Tools::ReadTestData(test_file, 4);
 			for (auto& e : test_data)
 			{
@@ -59,7 +59,7 @@ namespace FMTest
 		//*///------------------------------------------------------------------------------------------
 		TEST_METHOD(StrInBetweenVec)
 		{
-			string test_file = "../FMTest/TestData/STR/StrInBetweenVec.txt";
+			string test_file = "../FMLib-Test/TestData/STR/StrInBetweenVec.txt";
 			auto test_data = Tools::ReadTestData(test_file, 4);
 			for (auto& e : test_data)
 			{
@@ -74,7 +74,7 @@ namespace FMTest
 		//*///------------------------------------------------------------------------------------------
 		TEST_METHOD(Split)
 		{
-			string test_file = "../FMTest/TestData/STR/Split.txt";
+			string test_file = "../FMLib-Test/TestData/STR/Split.txt";
 			auto test_data = Tools::ReadTestData(test_file, 4);
 			for (auto& e : test_data)
 			{
@@ -93,7 +93,7 @@ namespace FMTest
 		//*///------------------------------------------------------------------------------------------
 		TEST_METHOD(ReplaceInStrOnce)
 		{
-			string test_file = "../FMTest/TestData/STR/ReplaceInStrOnce.txt";
+			string test_file = "../FMLib-Test/TestData/STR/ReplaceInStrOnce.txt";
 			auto test_data = Tools::ReadTestData(test_file, 4);
 			for (auto& e : test_data)
 			{
@@ -105,7 +105,7 @@ namespace FMTest
 		//*///------------------------------------------------------------------------------------------
 		TEST_METHOD(ReplaceInStrAll)
 		{
-			string test_file = "../FMTest/TestData/STR/ReplaceInStrAll.txt";
+			string test_file = "../FMLib-Test/TestData/STR/ReplaceInStrAll.txt";
 			auto test_data = Tools::ReadTestData(test_file, 4);
 			for (auto& e : test_data)
 			{
@@ -117,7 +117,7 @@ namespace FMTest
 		//*///------------------------------------------------------------------------------------------
 		TEST_METHOD(FindInStrAll)
 		{
-			string test_file = "../FMTest/TestData/STR/FindInStrAll.txt";
+			string test_file = "../FMLib-Test/TestData/STR/FindInStrAll.txt";
 			auto test_data = Tools::ReadTestData(test_file, 3);
 			for (auto& e : test_data)
 			{
@@ -132,7 +132,7 @@ namespace FMTest
 		//*///------------------------------------------------------------------------------------------
 		TEST_METHOD(ToLowerCase)
 		{
-			string test_file = "../FMTest/TestData/STR/ToLowerCase.txt";
+			string test_file = "../FMLib-Test/TestData/STR/ToLowerCase.txt";
 			auto test_data = Tools::ReadTestData(test_file, 2);
 			for (auto& e : test_data)
 			{
@@ -143,7 +143,7 @@ namespace FMTest
 		//*///------------------------------------------------------------------------------------------
 		TEST_METHOD(ToUpperCase)
 		{
-			string test_file = "../FMTest/TestData/STR/ToUpperCase.txt";
+			string test_file = "../FMLib-Test/TestData/STR/ToUpperCase.txt";
 			auto test_data = Tools::ReadTestData(test_file, 2);
 			for (auto& e : test_data)
 			{
@@ -154,7 +154,7 @@ namespace FMTest
 		//*///------------------------------------------------------------------------------------------
 		TEST_METHOD(GenMultTimes)
 		{
-			string test_file = "../FMTest/TestData/STR/GenMultTimes.txt";
+			string test_file = "../FMLib-Test/TestData/STR/GenMultTimes.txt";
 			auto test_data = Tools::ReadTestData(test_file, 3);
 			for (auto& e : test_data)
 			{
@@ -166,7 +166,7 @@ namespace FMTest
 		//*///------------------------------------------------------------------------------------------
 		TEST_METHOD(SubStrFromTo)
 		{
-			string test_file = "../FMTest/TestData/STR/SubStrFromTo.txt";
+			string test_file = "../FMLib-Test/TestData/STR/SubStrFromTo.txt";
 			auto test_data = Tools::ReadTestData(test_file, 4);
 			for (auto& e : test_data)
 			{
