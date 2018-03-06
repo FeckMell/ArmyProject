@@ -4,7 +4,7 @@ using namespace std;
 
 string STR::StrBetween(string target_, string begin_, string end_)
 	{
-		if (begin_ == "" || end_ == "") return "";
+	if ( begin_.empty() || end_.empty() ) return "";
 		size_t fd_begin = target_.find(begin_);
 		if (fd_begin == string::npos) return "";
 		else
@@ -24,7 +24,7 @@ string STR::StrBetween(string target_, string begin_, string end_)
 vector<string> STR::StrBetweenVec(string target_, string begin_, string end_)
 	{
 		vector<string> result;
-		if (begin_ == "" || end_ == "") return result;
+		if ( begin_.empty() || end_.empty() ) return result;
 		size_t fd_begin = target_.find(begin_);
 		size_t fd_end;
 		size_t begin_l = begin_.length();
@@ -47,7 +47,7 @@ vector<string> STR::StrBetweenVec(string target_, string begin_, string end_)
 string STR::StrInBetween(string target_, string begin_, string end_)
 	{
 		string result = StrBetween(target_, begin_, end_);
-		if (result == "") return "";
+		if ( result.empty() ) return "";
 		else return begin_ + result + end_;
 	}
 //*///------------------------------------------------------------------------------------------
@@ -62,7 +62,7 @@ vector<string> STR::StrInBetweenVec(string target_, string begin_, string end_)
 //*///------------------------------------------------------------------------------------------
 string STR::ReplaceInStrOnce(string target_, string old_, string new_)
 	{
-		if (old_ == "") return "";
+	if ( old_.empty()) return "";
 		size_t fd = target_.find(old_);
 		if (fd == string::npos) return target_;
 		else return target_.replace(fd, old_.length(), new_);
@@ -71,7 +71,7 @@ string STR::ReplaceInStrOnce(string target_, string old_, string new_)
 //*///------------------------------------------------------------------------------------------
 string STR::ReplaceInStrAll(string target_, string old_, string new_)
 	{
-		if (old_ == "") return "";
+	if ( old_.empty() ) return "";
 		size_t fd = target_.find(old_);
 		while (fd != string::npos)
 		{
@@ -92,7 +92,7 @@ string STR::SubStrFromTo(string target_, size_t from_, size_t to_)
 vector<string> STR::StrToVec(string target_, string delimeter_)
 	{
 		vector<string> result;
-		if (delimeter_ == "") return result;
+		if ( delimeter_.empty() ) return result;
 		size_t fd_p = 0;
 		size_t fd_n = target_.find(delimeter_);
 		size_t l = delimeter_.length();
@@ -131,7 +131,7 @@ string STR::VecToStrWithDel(vector<string> target_, string delimeter_, bool last
 vector<size_t> STR::FindInStrAll(string target_, string what_)
 {
 	vector<size_t> result;
-	if (what_ == "") return result;
+	if ( what_.empty() ) return result;
 	size_t length = what_.length();
 	size_t fd = target_.find(what_);
 	while (fd != string::npos)
@@ -167,7 +167,7 @@ string STR::ToUpperCase(string target_)
 //*///------------------------------------------------------------------------------------------
 bool STR::IsNumeric(std::string str_)
 {
-	if (str_ == "") return false;
+	if ( str_.empty() ) return false;
 	for (size_t i = 0; i < str_.size(); ++i) if (!isdigit(str_[i])) return false;
 	return true;
 }

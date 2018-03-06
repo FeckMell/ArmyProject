@@ -58,6 +58,7 @@ public:
 	bool Use(bool);
 
 	LogicOperations(string symbol_);
+	LogicOperations() {}
 	~LogicOperations() {}
 };
 

@@ -29,7 +29,7 @@ TCPSocketBuf::TCPSocketBuf(char* data_, size_t size_)
 //*///------------------------------------------------------------------------------------------
 TCPSocketBuf::TCPSocketBuf(string& data_)
 {
-	if (data_ == "" || data_.length() > 8000) return;
+	if ( data_.empty() || data_.length() > 8000 ) return;
 
 	thatData.resize(data_.length());
 	memcpy(thatData.data(), data_.c_str(), data_.length());
@@ -67,7 +67,7 @@ int TCPSocketBuf::Add(char* data_, size_t size_)
 //*///------------------------------------------------------------------------------------------
 int TCPSocketBuf::Add(std::string& data_)
 {
-	if (data_ == "") return -1;
+	if ( data_.empty() ) return -1;
 
 	thatData.resize(thatSize + data_.length());
 	memcpy(thatData.data() + thatSize, data_.c_str(), data_.length());

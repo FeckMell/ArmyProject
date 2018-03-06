@@ -16,7 +16,7 @@ string VST::PrintAll()
 //*///------------------------------------------------------------------------------------------
 string VST::Val(string name_)
 {
-	if ( name_ == "" ) return "";
+	if ( name_.empty() ) return "";
 	unsigned lvl = 0;
 	vector<string> name = STR::StrToVec(name_, ".");
 
@@ -28,7 +28,7 @@ string VST::Val(string name_)
 //*///------------------------------------------------------------------------------------------
 void VST::SetVal(string name_, string val_)
 {
-	if ( name_ == "" ) return ;
+	if ( name_.empty() ) return;
 	unsigned lvl = 0;
 	vector<string> name = STR::StrToVec(name_, ".");
 
@@ -44,7 +44,7 @@ void VST::SetVal(string name_, string val_)
 //*///------------------------------------------------------------------------------------------
 void VST::DelVal(string name_)
 {
-	if ( name_ == "" ) return ;
+	if ( name_.empty() ) return;
 	unsigned lvl = 0;
 	vector<string> name = STR::StrToVec(name_, ".");
 
@@ -56,7 +56,7 @@ void VST::DelVal(string name_)
 //*///------------------------------------------------------------------------------------------
 VST VST::ValSubTree(string name_)
 {
-	if ( name_ == "" ) return VST();
+	if ( name_.empty() ) return VST();
 	unsigned lvl = 0;
 	vector<string> name = STR::StrToVec(name_, ".");
 
@@ -65,7 +65,7 @@ VST VST::ValSubTree(string name_)
 	else
 	{
 		VSTE preresult = it->second.ValSubTree(name, lvl);
-		if ( preresult.NodeName() == "" ) return VST();
+		if ( preresult.NodeName().empty() ) return VST();
 		else
 		{
 			VST result;
@@ -79,7 +79,7 @@ VST VST::ValSubTree(string name_)
 /* Not optimal in:*/
 void VST::SetValSubTree(string name_, VST val_)
 {
-	if ( name_ == "" )
+	if ( name_.empty() )
 	{
 		thatDataTree = val_.thatDataTree;
 		return;
@@ -111,7 +111,7 @@ void VST::SetValSubTree(string name_, VST val_)
 //*///------------------------------------------------------------------------------------------
 void VST::DelValSubTree(string name_)
 {
-	if ( name_ == "" )
+	if ( name_.empty() )
 	{
 		thatDataTree = map<string, VSTE>();
 		return;

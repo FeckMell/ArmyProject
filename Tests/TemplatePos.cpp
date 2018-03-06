@@ -45,12 +45,28 @@ template<class T> struct Foo<T, false>
 	static void foo(const T &t) { cout << "Nothing"; }
 };
 */
+
+void rem(vector<int>& e_)
+{
+	e_.erase(e_.begin() + 3);
+}
 int main()
 {
 	int exit;
 	/*A a;	B b;cout << "\nA - "; Foo<A>::foo(a);cout << "\nB - "; Foo<B>::foo(b);*/
 
-	deque<int> q;
+	queue<int> q;
+	q.push(1);
+	q.push(2);
+	q.push(3);
+	q.push(4);
+	q.push(5);
+	while ( !q.empty() )
+	{
+		cout << "\nback=" << q.front();
+		q.pop();
+		cout << "  and now=" << q.back();
+	}
 
 	
 	cin >> exit;

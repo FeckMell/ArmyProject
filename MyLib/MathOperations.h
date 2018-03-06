@@ -7,10 +7,15 @@ private:
 
 	typedef std::string string;
 
+	string thatSymbol = "";
+	unsigned thatPriority = 0;
+	bool thatBinary = 0;
+
 public:
 
-	unsigned Priority();
-	bool IsBinary();
+	string Symbol() { return thatSymbol; }
+	unsigned Priority() { return thatPriority; }
+	bool IsBinary() { return thatBinary; }
 	bool IsSet();
 
 	MathOperations(string symbol_, unsigned priority_, bool binary_, boost::any func_);

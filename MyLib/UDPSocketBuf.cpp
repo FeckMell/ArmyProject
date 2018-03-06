@@ -30,7 +30,7 @@ UDPSocketBuf::UDPSocketBuf(char* data_, size_t size_)
 //*///------------------------------------------------------------------------------------------
 UDPSocketBuf::UDPSocketBuf(string& data_)
 {
-	if (data_ == "") return;
+	if ( data_.empty() ) return;
 	else if (data_.length() > 8000) return;
 
 	memcpy(thatData, data_.c_str(), data_.length());
@@ -70,7 +70,7 @@ int UDPSocketBuf::Add(char* data_, size_t size_)
 //*///------------------------------------------------------------------------------------------
 int UDPSocketBuf::Add(std::string& data_)
 {
-	if (data_ == "") return -1;
+	if ( data_.empty() ) return -1;
 	else if (data_.length() > 8000) return -2;
 	else if (data_.length() + thatSize > 8000) return -3;
 

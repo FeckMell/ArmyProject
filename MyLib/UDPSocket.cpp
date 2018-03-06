@@ -11,10 +11,9 @@ UDPSocket::UDPSocket(SHP_IO io_, string server_ip_, string server_port_, string 
 	thatSocket.bind(ep);
 	opened = true;
 
-	if (client_ip_ != "" && client_port_ != "")
-	{
-		thatEndpoint = SocketFuncs::GetEP(client_ip_, client_port_);
-	}
+	if ( client_ip_.empty() || client_port_.empty() ) ;
+	else thatEndpoint = SocketFuncs::GetEP(client_ip_, client_port_);
+
 }
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
