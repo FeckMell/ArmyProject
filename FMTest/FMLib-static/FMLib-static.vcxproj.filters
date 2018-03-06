@@ -20,9 +20,6 @@
     <Text Include="TextEdittxt.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
     <ClInclude Include="Calculation\Math\Operation.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
@@ -64,9 +61,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
     <ClCompile Include="Calculation\Math\Operation.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>

@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FMLib-Test", "FMLib-Test\FM
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Temp", "Temp\Temp.vcxproj", "{E908586C-2F17-4FD5-8B7F-AF9C42113378}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Filter", "Filter\Filter.vcxproj", "{503499F1-564D-46E2-96A9-872F950DC03E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -27,6 +29,10 @@ Global
 		{E908586C-2F17-4FD5-8B7F-AF9C42113378}.Debug|Win32.Build.0 = Debug|Win32
 		{E908586C-2F17-4FD5-8B7F-AF9C42113378}.Release|Win32.ActiveCfg = Release|Win32
 		{E908586C-2F17-4FD5-8B7F-AF9C42113378}.Release|Win32.Build.0 = Release|Win32
+		{503499F1-564D-46E2-96A9-872F950DC03E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{503499F1-564D-46E2-96A9-872F950DC03E}.Debug|Win32.Build.0 = Debug|Win32
+		{503499F1-564D-46E2-96A9-872F950DC03E}.Release|Win32.ActiveCfg = Release|Win32
+		{503499F1-564D-46E2-96A9-872F950DC03E}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

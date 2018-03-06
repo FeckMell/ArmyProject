@@ -1,5 +1,8 @@
 #pragma once
-#include "stdafx.h"
+//#include "stdafx.h"
+#include <string>
+#include <map>
+#include <vector>
 #include "CommonTypes\DataStorage\AnyWithType.h"
 #include "CommonTypes\Except.h"
 #include "Interfaces\Str.h"
@@ -17,31 +20,46 @@ template<class _T> class ValStoreLineT
 {
 private:
 
+	/*Data storage*/
+	std::map<std::string, _T> thatDataVals;
+
+	/*Check if @name_ is empty*/
 	bool CheckEmpty(std::string name_);
+	/*Check if element with @name_ exists*/
 	AnyWithType CheckExist(std::string name_);
 
+	/*Set all sub names for @name_ with default values*/
 	void SetSubNames(std::string name_);
-
-	std::map<std::string, _T> thatDataVals;
 
 public:
 
+	/*Return @thatDataVals converted to string*/
 	std::string ToString();
 	ValStoreLineT() {}
 
+	/*Return all node names begins with @name_*/
 	std::vector<std::string> NodesNamesAll(std::string name_ = "");
+	/*Return all nodes names begins with @name_ and that doesnt have any childs*/
 	std::vector<std::string> NodesNamesChild(std::string name_ = "");
+	/*Check if node with name @name_ doestnt have childs*/
 	bool IsFinal(std::string name_);
 
+	/*Return stored element*/
 	_T Val(std::string name_);
+	/*Return sub tree begins with @name_*/
 	ValStoreLineT<_T> ValSubTree(std::string name_);
 
+	/*methods to set vals*/
 	void SetVal(std::string name_, _T val_);
 	void SetValSubTree(std::string name_, ValStoreLineT<_T> val_);
 	void SetValSubTree(std::string name_, std::map<std::string, _T> val_);
 
+	/*Methods to delete vals*/
 	void DelVal(std::string name_);
 	void DelValSubTree(std::string name_);
+
+	/*Clear data*/
+	void Clear();
 
 };
 
@@ -339,6 +357,10 @@ template<class _T> bool ValStoreLineT<_T>::IsFinal(std::string name_)
 }
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
+template<class _T> void ValStoreLineT<_T>::Clear()
+{
+	thatDataVals.clear();
+}
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------

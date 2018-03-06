@@ -1,4 +1,4 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "LOG2.h"
 
 #ifndef LOG2_Class_Off

@@ -1,5 +1,5 @@
 #pragma once
-#include "stdafx.h"
+//#include "stdafx.h"
 
 //#undef TestMethod_Class_Off
 #define TestMethod_Class_Off

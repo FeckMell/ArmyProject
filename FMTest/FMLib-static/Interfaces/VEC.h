@@ -1,5 +1,7 @@
 #pragma once
-#include "stdafx.h"
+//#include "stdafx.h"
+#include <vector>
+#include <boost\function.hpp>
 #include "CommonTypes\Except.h"
 
 

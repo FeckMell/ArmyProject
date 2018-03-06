@@ -1,5 +1,8 @@
 #pragma once
-#include "stdafx.h"
+//#include "stdafx.h"
+#include <string>
+#include <iostream>
+#include <fstream>
 #include "CommonTypes\Except.h"
 #include "CommonTypes\DataStorage\ValStoreLineT.h"
 

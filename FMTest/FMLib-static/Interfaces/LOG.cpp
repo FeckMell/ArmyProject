@@ -1,4 +1,4 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "LOG.h"
 using namespace std;
 map<string, ofstream> LOG::thatFiles;

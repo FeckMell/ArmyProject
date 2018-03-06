@@ -1,5 +1,8 @@
 #pragma once
-#include "stdafx.h"
+//#include "stdafx.h"
+#include <string>
+#include <map>
+#include <boost\any.hpp>
 
 class AnyWithType
 {

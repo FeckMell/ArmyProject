@@ -1,5 +1,8 @@
 #pragma once
-#include "stdafx.h"
+//#include "stdafx.h"
+#include <string>
+#include <map>
+#include <vector>
 #include "Interfaces/STR.h"
 
 class ValStoreTree

@@ -1,5 +1,6 @@
 #pragma once
-#include "stdafx.h"
+//#include "stdafx.h"
+#include <boost\function.hpp>
 #include "CommonTypes\DataStorage\AnyWithType.h"
 #include "Calculation\Math\Operation.h"
 #include "Interfaces\Str.h"

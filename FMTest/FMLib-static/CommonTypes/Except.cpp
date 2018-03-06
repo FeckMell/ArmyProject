@@ -1,13 +1,9 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "Except.h"
-#define EXCEPT_COUT
 using namespace std;
 
 Except::Except(string what_)
 {
-#ifdef EXCEPT_COUT 
-	cout << "\nExcept!";
-#endif
 	thatData.push(what_);
 }
 //*///------------------------------------------------------------------------------------------

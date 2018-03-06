@@ -11,19 +11,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{EDC1E1EB-31BF-495C-BBEE-E13E47F35ECB}</ProjectGuid>
+    <ProjectGuid>{503499F1-564D-46E2-96A9-872F950DC03E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>FMLibstatic</RootNamespace>
+    <RootNamespace>Filter</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -40,81 +40,62 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\LIBS\Boost\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\LIBS\Boost\lib;$(LibraryPath)</LibraryPath>
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\WORK\FMLib\FMLib-static;C:\LIBS\Boost\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\WORK\FMLib\Debug;C:\LIBS\Boost\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\LIBS\Boost\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\LIBS\Boost\lib;$(LibraryPath)</LibraryPath>
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\WORK\FMLib\FMLib-static;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <BrowseInformation>true</BrowseInformation>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <Bscmake>
-      <PreserveSbr>true</PreserveSbr>
-    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\WORK\FMLib\FMLib-static;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ChangeLog.txt" />
-    <Text Include="Plans.txt" />
-    <Text Include="TextEdittxt.txt" />
+    <ClInclude Include="Process.h" />
+    <ClInclude Include="Time.h" />
+    <ClInclude Include="ReadFile.h" />
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Interfaces\STR.h" />
-    <ClInclude Include="Parsers\Other\Army.h" />
-    <ClInclude Include="Calculation\Math\Operation.h" />
-    <ClInclude Include="Calculation\Math\RevPolNotation.h" />
-    <ClInclude Include="CommonTypes\DataStorage\AnyWithType.h" />
-    <ClInclude Include="CommonTypes\DataStorage\ValStoreLineT.h" />
-    <ClInclude Include="CommonTypes\DataStorage\ValStoreTree.h" />
-    <ClInclude Include="CommonTypes\Except.h" />
-    <ClInclude Include="Interfaces\CFG.h" />
-    <ClInclude Include="Interfaces\CheckMethod.h" />
-    <ClInclude Include="Interfaces\LOG.h" />
-    <ClInclude Include="Interfaces\LOG2.h" />
-    <ClInclude Include="Interfaces\VEC.h" />
+    <ClCompile Include="Filter.cpp" />
+    <ClCompile Include="Process.cpp" />
+    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="ReadFile.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Calculation\Math\RevPolNotation_Calc.cpp" />
-    <ClCompile Include="Interfaces\STR.cpp" />
-    <ClCompile Include="Parsers\Other\Army.cpp" />
-    <ClCompile Include="Calculation\Math\Operation.cpp" />
-    <ClCompile Include="Calculation\Math\RevPolNotation.cpp" />
-    <ClCompile Include="Calculation\Math\RevPolNotation_Parser.cpp" />
-    <ClCompile Include="CommonTypes\DataStorage\AnyWithType.cpp" />
-    <ClCompile Include="CommonTypes\DataStorage\ValStoreTree.cpp" />
-    <ClCompile Include="CommonTypes\DataStorage\ValStoreTreeEntry.cpp" />
-    <ClCompile Include="CommonTypes\Except.cpp" />
-    <ClCompile Include="Interfaces\CFG.cpp" />
-    <ClCompile Include="Interfaces\LOG.cpp" />
-    <ClCompile Include="Interfaces\LOG2.cpp" />
+    <ProjectReference Include="..\FMLib-static\FMLib-static.vcxproj">
+      <Project>{edc1e1eb-31bf-495c-bbee-e13e47f35ecb}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,5 +1,18 @@
 #pragma once
-#include "stdafx.h"
+#ifdef WIN32
+#include <SDKDDKVer.h>
+#define _CRT_SECURE_NO_WARNINGS
+#define WIN32_LEAN_AND_MEAN          
+#endif
+//#include "stdafx.h"
+#include <memory>
+#include <thread>
+#include <chrono>
+#include <iostream>
+#include <fstream>
+#include <boost\asio.hpp>
+#include <boost\bind.hpp>
+#include <boost/date_time/posix_time/posix_time.hpp>
 #include "Interfaces\CFG.h"
 
 class LOG

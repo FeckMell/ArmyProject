@@ -1,4 +1,4 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "ValStoreTree.h"
 using namespace std;
 

@@ -1,5 +1,7 @@
 #pragma once
-#include "stdafx.h"
+//#include "stdafx.h"
+#include <string>
+#include <vector>
 #include "CommonTypes\Except.h"
 
 class STR
