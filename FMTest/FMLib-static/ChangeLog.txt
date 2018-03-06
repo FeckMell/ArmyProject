@@ -1,4 +1,18 @@
+2017.11.17
+*Army
+	1) Done parsing, converting, tests
+*Operation
+	1) Rewritten class as case based on AnyWithType
+	2) Tested
+*RevPolNotation
+	1) Splited on Parsing and Calc.
+	2) Parsing done and tested
+	3) Calc done and tested once
 
+2017.11.15
+*STR
+	1) Relesed *_M methods
+	2) Rewritten some usual methods
 
 2017.11.14
 *VEC added

@@ -6,7 +6,7 @@ using namespace std;
 
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
-RevPolNotation::RevPolNotation(string expression_, vector<string> alphabet_, unsigned mode_)
+RevPolNotation::RevPolNotation(string expression_, vector<string> alphabet_, unsigned mode_) : thatExpressionSTR(expression_)
 {
 	if (expression_.empty()) throw Except("Expression empty");
 
@@ -14,26 +14,26 @@ RevPolNotation::RevPolNotation(string expression_, vector<string> alphabet_, uns
 	Init(alphabet_, mode_);
 
 	/*Create and init helper which parses expression*/
-	RevPolNotation_Helper helper(expression_, alphabet_, mode_);
+	RevPolNotation_Parser parser(expression_, alphabet_, mode_);
 
 	/*Init parsing*/
 	vector<pair<size_t, string>> oper_places;
 	vector<AnyWithType> rev_pol_notation;
 
 	/*Get places of operations to use them as tombstones*/
-	oper_places = helper.FindOperationPlaces();
+	oper_places = parser.FindOperationPlaces(thatExpressionSTR);
 
 	/*Make thatExpressionSTR more clear*/
-	thatExpressionSTR = helper.ExpressionClean(oper_places);
+	thatExpressionSTR = parser.ExpressionClean(oper_places, thatExpressionSTR);
 
 	/*Get places of operations again as they changed*/
-	oper_places = helper.FindOperationPlaces();
+	oper_places = parser.FindOperationPlaces(thatExpressionSTR);
 
 	/*Parse expression*/
-	rev_pol_notation = helper.ToRevPolNotation(oper_places);
+	rev_pol_notation = parser.ToRevPolNotation(oper_places, thatExpressionSTR);
 
 	/*Convert values and name in RPN to define what is value and what is parameter to get from storage*/
-	thatExpressionRPN = helper.ConvertValues(rev_pol_notation);
+	thatExpressionRPN = parser.ConvertValues(rev_pol_notation);
 }
 //*///------------------------------------------------------------------------------------------ 
 //*///------------------------------------------------------------------------------------------
@@ -46,6 +46,35 @@ deque<AnyWithType> RevPolNotation::GetExpressionRPN()
 string RevPolNotation::GetExpressionSTR()
 {
 	return thatExpressionSTR;
+}
+//*///------------------------------------------------------------------------------------------ 
+//*///------------------------------------------------------------------------------------------
+string RevPolNotation::ToString()
+{
+	string result;
+	auto expr_rpn = thatExpressionRPN;
+
+	while (!expr_rpn.empty())
+	{
+		switch (expr_rpn.front().TypeU())
+		{
+			case Types::OPERATION: result += boost::any_cast<Operation*>(expr_rpn.front().Data())->Symbol() + " "; break;
+			case Types::NAME: result += boost::any_cast<string>(expr_rpn.front().Data()) + " "; break;
+			case AnyWithType::BOOL: result += to_string(boost::any_cast<bool>(expr_rpn.front().Data())) + " "; break;
+			case AnyWithType::INT: result += to_string(boost::any_cast<int>(expr_rpn.front().Data())) + " "; break;
+			case AnyWithType::UNSIGNED: result += to_string(boost::any_cast<unsigned>(expr_rpn.front().Data())) + " "; break;
+			case AnyWithType::DOUBLE: result += to_string(boost::any_cast<double>(expr_rpn.front().Data())) + " "; break;
+			case AnyWithType::STRING: result += boost::any_cast<string>(expr_rpn.front().Data()) + " "; break;
+			default:throw Except("Bad expression");
+
+		}
+		expr_rpn.pop_front();
+	}
+
+	/*Delete last space*/
+	result.pop_back();
+
+	return result;
 }
 //*///------------------------------------------------------------------------------------------ 
 //*///------------------------------------------------------------------------------------------
@@ -77,6 +106,14 @@ void RevPolNotation::Init(vector<string> alphabet_, unsigned mode_)
 }
 //*///------------------------------------------------------------------------------------------ 
 //*///------------------------------------------------------------------------------------------
+AnyWithType  RevPolNotation::Evulate(boost::function<AnyWithType(string)> get_)
+{
+	/*Init calculator*/
+	RevPolNotation_Calc calc(get_, thatExpressionRPN);
+
+	/*Calc*/
+	return calc.Evulate();
+}
 //*///------------------------------------------------------------------------------------------ 
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------ 

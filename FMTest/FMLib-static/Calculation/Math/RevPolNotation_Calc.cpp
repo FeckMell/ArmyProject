@@ -1,63 +1,60 @@
 #include "stdafx.h"
-#include "Tools.h"
-#include "CommonTypes\Except.h"
+#include "Calculation\Math\RevPolNotation.h"
 using namespace std;
-using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-//*///------------------------------------------------------------------------------------------
-//*///------------------------------------------------------------------------------------------
-wstring Tools::ToWString(string s_)
+RevPolNotation::RevPolNotation_Calc::RevPolNotation_Calc(boost::function<AnyWithType(string)> get_, deque<AnyWithType> rpn_)
 {
-	wchar_t* wcs = new wchar_t[s_.length()];
-	try{ mbstowcs(wcs, s_.c_str(), s_.length()); }
-	catch (...){ return L"FUCKTOOLS"; }
-	wstring result(wcs);
-
-	delete[] wcs;
-	return result;
+	thatGet = get_;
+	thatExpressionRPN = rpn_;
 }
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
-vector<vector<string>> Tools::ReadTestData(string path_, unsigned size_)
+AnyWithType RevPolNotation::RevPolNotation_Calc::Evulate()
 {
-	ifstream file;
-	string file_line = "";
-	vector<vector<string>> result;
-	vector<string> data;
+	/*Init calculation*/
+	stack<AnyWithType> tmp_stack;
+	AnyWithType tmp1;
+	AnyWithType tmp2;
+	AnyWithType tmp3;
 
-	file.open(path_);
-	Assert::IsTrue(file.is_open(), ToWString("File:" + path_ + " not found").c_str());
-
-	while (getline(file, file_line))
+	while (!thatExpressionRPN.empty())
 	{
-		if (file_line.substr(0, 1) == "*") data.push_back(file_line.substr(1, string::npos));
-		if (data.size() == size_)
+		tmp3 = thatExpressionRPN.front();	thatExpressionRPN.pop_front();
+		switch (tmp3.TypeU())
 		{
-			result.push_back(data);
-			data.clear();
+			case RevPolNotation::Types::OPERATION:
+				if (tmp_stack.size() < 2) throw Except("Bad expression");
+				tmp1 = tmp_stack.top(); tmp_stack.pop();
+				tmp2 = tmp_stack.top(); tmp_stack.pop();
+				tmp_stack.push(Case_Operation(tmp1, tmp2, tmp3));
+				break;
+
+			case RevPolNotation::Types::NAME:
+				tmp_stack.push(thatGet(boost::any_cast<string>(tmp3.Data())));
+				break;
+
+			default:
+				tmp_stack.push(tmp3);
+				break;
 		}
 	}
-	file.close();
-	Assert::IsTrue(data.empty(), ToWString("File with test data is not correct. File:" + path_).c_str());
-	return result;
+
+	/*Check that we achieved result*/
+	if (tmp_stack.size() != 1) throw Except("Bad expression");
+
+	/*Last element in stack is result*/
+	return tmp_stack.top();
 }
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
-void Tools::RecurCall(unsigned i_, boost::function<unsigned(unsigned)> f_i_change, boost::function<bool(unsigned)> f_if,
-	boost::function<void(unsigned)> f_true, boost::function<void(unsigned, boost::any)> f_catch)
+AnyWithType RevPolNotation::RevPolNotation_Calc::Case_Operation(AnyWithType& a_, AnyWithType& b_, AnyWithType& op_)
 {
-	try
-	{
-		if (f_if(i_)) f_true(i_);
-		else RecurCall(f_i_change(i_), f_i_change, f_if, f_true, f_catch);
-	}
-	catch (Except e)
-	{
-		f_catch(i_, e);
-	}
+	if (a_.TypeU() != b_.TypeU())	throw Except("Bad expression");
+	Operation* op = boost::any_cast<Operation*>(op_.Data());
+	AnyWithType result = op->Use(a_, b_);
+	return result;
+	//return boost::any_cast<Operation*>(op_)->Use(a_, b_);
 }
-//*///------------------------------------------------------------------------------------------
-//*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------

@@ -2,28 +2,35 @@
 #include "AnyWithType.h"
 
 using namespace std;
-std::map<std::string, unsigned> AnyWithType::FromStrToUns = {
+map<string, unsigned> AnyWithType::FromStrToUns = {
 	{ "NONE", AnyWithType::NONE },
-	{ "BOOL", AnyWithType::BOOL },
-	{ "INT", AnyWithType::INT },
-	{ "DOUBLE", AnyWithType::DOUBLE },
-	{ "STRING", AnyWithType::STRING },
 	{ "none", AnyWithType::NONE },
-	{ "bool", AnyWithType::BOOL },
-	{ "int", AnyWithType::INT },
-	{ "double", AnyWithType::DOUBLE },
-	{ "string", AnyWithType::STRING },
 	{ "None", AnyWithType::NONE },
+	{ "BOOL", AnyWithType::BOOL },
+	{ "bool", AnyWithType::BOOL },
 	{ "Bool", AnyWithType::BOOL },
+	{ "INT", AnyWithType::INT },
+	{ "int", AnyWithType::INT },
 	{ "Int", AnyWithType::INT },
+	{ "DOUBLE", AnyWithType::DOUBLE },
+	{ "double", AnyWithType::DOUBLE },
 	{ "Double", AnyWithType::DOUBLE },
-	{ "String", AnyWithType::STRING }
+	{ "UNSIGNED", AnyWithType::UNSIGNED },
+	{ "unsigned", AnyWithType::UNSIGNED },
+	{ "Unsigned", AnyWithType::UNSIGNED },
+	{ "STRING", AnyWithType::STRING },
+	{ "string", AnyWithType::STRING },
+	{ "String", AnyWithType::STRING },
+	{ "OTHER", AnyWithType::OTHER },
+	{ "other", AnyWithType::OTHER },
+	{ "Other", AnyWithType::OTHER }
 };
-std::map<unsigned, std::string> AnyWithType::FromUnsToStr = {
+map<unsigned, string> AnyWithType::FromUnsToStr = {
 	{ AnyWithType::NONE, "NONE" },
 	{ AnyWithType::BOOL, "BOOL" },
 	{ AnyWithType::INT, "INT" },
 	{ AnyWithType::DOUBLE, "DOUBLE" },
+	{ AnyWithType::UNSIGNED, "UNSIGNED" },
 	{ AnyWithType::STRING, "STRING" },
 	{ AnyWithType::OTHER, "OTHER" }
 };
@@ -74,7 +81,9 @@ void AnyWithType::Set(boost::any data_, unsigned type_)
 {
 	thatData = data_;
 	thatDataTypeU = type_;
-	thatDataTypeS = FromUnsToStr[type_];
+	auto it = FromUnsToStr.find(type_);
+	if (it == FromUnsToStr.end()) thatDataTypeS = "OTHER";
+	else thatDataTypeS = it->second;
 }
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------

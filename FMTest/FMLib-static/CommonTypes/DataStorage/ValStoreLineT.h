@@ -18,7 +18,8 @@ template<class _T> class ValStoreLineT
 private:
 
 	bool CheckEmpty(std::string name_);
-	AnyWithType CheckExist(std::string name_); //
+	AnyWithType CheckExist(std::string name_);
+
 	void SetSubNames(std::string name_);
 
 	std::map<std::string, _T> thatDataVals;

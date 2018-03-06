@@ -3,17 +3,14 @@
 
 using namespace std;
 
-RevPolNotation::RevPolNotation_Helper::RevPolNotation_Helper(string expression_, vector<string> alphabet_, unsigned mode_)
+RevPolNotation::RevPolNotation_Parser::RevPolNotation_Parser(string expression_, vector<string> alphabet_, unsigned mode_)
 {
-	/*Remember expression in helper*/
-	thatExpressionSTR = expression_;
-
 	/*Set alphabet for this session*/
 	Init(alphabet_, mode_);
 }
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
-void RevPolNotation::RevPolNotation_Helper::Init(vector<string> alphabet_, unsigned mode_)
+void RevPolNotation::RevPolNotation_Parser::Init(vector<string> alphabet_, unsigned mode_)
 {
 	/* if empty, then default alphabet*/
 	if (alphabet_.empty())
@@ -36,12 +33,13 @@ void RevPolNotation::RevPolNotation_Helper::Init(vector<string> alphabet_, unsig
 			case Replace:
 				thatAlphabet = alphabet_;
 				break;
+			default: throw Except("Call error");
 		}
 	}
 }
 //*///------------------------------------------------------------------------------------------ 
 //*///------------------------------------------------------------------------------------------
-vector<pair<size_t, string>> RevPolNotation::RevPolNotation_Helper::FindOperationPlaces()
+vector<pair<size_t, string>> RevPolNotation::RevPolNotation_Parser::FindOperationPlaces(string expression_)
 {
 	vector<size_t> tmp;
 	vector<pair<size_t, string>> result;
@@ -49,7 +47,7 @@ vector<pair<size_t, string>> RevPolNotation::RevPolNotation_Helper::FindOperatio
 	/*Find all places of operations*/
 	for (auto& e : thatAlphabet)
 	{
-		tmp = STR::FindInStrAll(thatExpressionSTR, e);
+		tmp = STR::FindInStrAll(expression_, e);
 		for (auto& t : tmp) result.push_back({ t, e });
 	}
 
@@ -62,7 +60,7 @@ vector<pair<size_t, string>> RevPolNotation::RevPolNotation_Helper::FindOperatio
 }
 //*///------------------------------------------------------------------------------------------ 
 //*///------------------------------------------------------------------------------------------
-void RevPolNotation::RevPolNotation_Helper::RemoveCollisions(vector<pair<size_t, string>>& vec_)
+void RevPolNotation::RevPolNotation_Parser::RemoveCollisions(vector<pair<size_t, string>>& vec_)
 {
 	if (vec_.empty()) throw Except("Bad expression");
 
@@ -91,38 +89,32 @@ void RevPolNotation::RevPolNotation_Helper::RemoveCollisions(vector<pair<size_t,
 }
 //*///------------------------------------------------------------------------------------------ 
 //*///------------------------------------------------------------------------------------------
-string RevPolNotation::RevPolNotation_Helper::ExpressionClean(vector<pair<size_t, string>> oper_places_)
+string RevPolNotation::RevPolNotation_Parser::ExpressionClean(vector<pair<size_t, string>> oper_places_, string expression_)
 {
-	/*copy expression. Delete this later*/
-	string expr = thatExpressionSTR;
-
 	/*Go throw all operation from end (as their places will change otherwise)*/
 	unsigned i = oper_places_.size() - 1;
 	while (i < oper_places_.size())
 	{
 		/*and add to their symbols extra spaces in front and behind them*/
-		expr.replace(oper_places_[i].first, oper_places_[i].second.length(), " " + oper_places_[i].second + " ");
+		expression_.replace(oper_places_[i].first, oper_places_[i].second.length(), " " + oper_places_[i].second + " ");
 
 		/*DEcrease counter*/
 		--i;
 	}
 
 	/*Delete double spaces*/
-	expr = STR::ReplaceInStrAll(expr, "  ", " ");
+	expression_ = STR::ReplaceInStrAll(expression_, "  ", " ");
 
 	/*Delete extra space in front and back of expression*/
-	if (expr.front() == ' ') expr.erase(expr.front());
-	if (expr.back() == ' ') expr.pop_back();
-
-	/*replace expression in helper*/
-	thatExpressionSTR = expr;
+	if (expression_.front() == ' ') expression_.erase(expression_.begin());
+	if (expression_.back() == ' ')  expression_.pop_back();
 
 	/*return to main class*/
-	return expr;
+	return expression_;
 }
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
-vector<AnyWithType> RevPolNotation::RevPolNotation_Helper::ToRevPolNotation(vector<pair<size_t, string>> oper_places_)
+vector<AnyWithType> RevPolNotation::RevPolNotation_Parser::ToRevPolNotation(vector<pair<size_t, string>> oper_places_, string expression_)
 {
 	/*See logic of this convertion in algorithms in the Internet: http://www.interface.ru/home.asp?artId=1492 */
 	/*Init parsing*/
@@ -132,8 +124,8 @@ vector<AnyWithType> RevPolNotation::RevPolNotation_Helper::ToRevPolNotation(vect
 	string tmp_oper;
 	string tmp_str;
 
-	/*Split thatExpressionSTR to values, names and operations in order as in thatExpressionSTR*/
-	expr = SplitExpression(oper_places_);
+	/*Split @expression_ to values, names and operations in order as in @expression_*/
+	expr = SplitExpression(oper_places_, expression_);
 
 	/*Convert to Reverse Polish Notation*/
 	unsigned i = 0;
@@ -171,7 +163,7 @@ vector<AnyWithType> RevPolNotation::RevPolNotation_Helper::ToRevPolNotation(vect
 	/*When finished parsing need to extract operations from @tmp_stack to @result*/
 	while (!tmp_stack.empty())
 	{
-		result.push_back(AnyWithType(Operation::Get(tmp_stack.top()), "Operation"));
+		result.push_back(AnyWithType(Operation::Get(tmp_stack.top()), RevPolNotation::Types::OPERATION));
 		tmp_stack.pop();
 	}
 
@@ -180,7 +172,7 @@ vector<AnyWithType> RevPolNotation::RevPolNotation_Helper::ToRevPolNotation(vect
 }
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
-vector<string> RevPolNotation::RevPolNotation_Helper::SplitExpression(vector<pair<size_t, string>> oper_places_)
+vector<string> RevPolNotation::RevPolNotation_Parser::SplitExpression(vector<pair<size_t, string>> oper_places_, string expression_)
 {
 	/*Init*/
 	vector<string> result;
@@ -193,11 +185,11 @@ vector<string> RevPolNotation::RevPolNotation_Helper::SplitExpression(vector<pai
 	for (unsigned i = 0; i<oper_places_.size() - 1; ++i)
 	{
 		result.push_back(oper_places_[i].second);
-		result.push_back(STR::SubStrFromTo(thatExpressionSTR, oper_places_[i].first + oper_places_[i].second.length(), oper_places_[i + 1].first));
+		result.push_back(STR::SubStrFromTo(expression_, oper_places_[i].first + oper_places_[i].second.length(), oper_places_[i + 1].first));
 	}
 
 	/*Delete empty elements and space elements*/
-	for (unsigned i = 0; i < result.size(); ++i)
+	for (unsigned i = result.size() - 1; i < result.size(); --i)
 	{
 		if (result[i].empty()) result.erase(result.begin() + i);
 		else if (result[i] == " ") result.erase(result.begin() + i);
@@ -210,15 +202,12 @@ vector<string> RevPolNotation::RevPolNotation_Helper::SplitExpression(vector<pai
 		if (e.back() == ' ') e.pop_back();
 	}
 
-	/*Delete string::npos operation*/
-	//oper_places_.pop_back();
-
 	/*return to helper class*/
 	return result;
 }
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
-deque<AnyWithType> RevPolNotation::RevPolNotation_Helper::ConvertValues(vector<AnyWithType> rpn_)
+deque<AnyWithType> RevPolNotation::RevPolNotation_Parser::ConvertValues(vector<AnyWithType> rpn_)
 {
 	/*Init*/
 	deque<AnyWithType> result;
@@ -228,14 +217,22 @@ deque<AnyWithType> RevPolNotation::RevPolNotation_Helper::ConvertValues(vector<A
 	/*Converting*/
 	for (auto& e : rpn_)
 	{
-		if (e.TypeS() == "Value")
+		if (e.TypeU() == RevPolNotation::Types::VALUE)
 		{
 			tmp_data = boost::any_cast<string>(e.Data());
 			tmp_val = STR::SubStrFromTo(tmp_data, 0, 2);
 			if (tmp_val == "N:")
-				result.push_back(AnyWithType(STR::SubStrFromTo(tmp_data, 2, string::npos), "Name"));
-			else if (tmp_val == "V:")
-				result.push_back(AnyWithType(STR::SubStrFromTo(tmp_data, 2, string::npos), "Value"));
+				result.push_back(AnyWithType(STR::SubStrFromTo(tmp_data, 2, string::npos), RevPolNotation::Types::NAME));
+			else if (tmp_val == "B:")
+				result.push_back(AnyWithType(STR::ToBool(STR::SubStrFromTo(tmp_data, 2, string::npos)), AnyWithType::BOOL));
+			else if (tmp_val == "I:")
+				result.push_back(AnyWithType(STR::ToInt(STR::SubStrFromTo(tmp_data, 2, string::npos)), AnyWithType::INT));
+			else if (tmp_val == "U:")
+				result.push_back(AnyWithType(STR::ToUnsigned(STR::SubStrFromTo(tmp_data, 2, string::npos)), AnyWithType::UNSIGNED));
+			else if (tmp_val == "S:")
+				result.push_back(AnyWithType(STR::SubStrFromTo(tmp_data, 2, string::npos), AnyWithType::STRING));
+			else if (tmp_val == "D:")
+				result.push_back(AnyWithType(STR::ToDouble(STR::SubStrFromTo(tmp_data, 2, string::npos)), AnyWithType::DOUBLE));
 			else throw Except("Bad expression");
 		}
 		else result.push_back(e);
@@ -248,25 +245,25 @@ deque<AnyWithType> RevPolNotation::RevPolNotation_Helper::ConvertValues(vector<A
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
-void RevPolNotation::RevPolNotation_Helper::If_Value(string& e_, vector<AnyWithType>& result_)
+void RevPolNotation::RevPolNotation_Parser::If_Value(string& e_, vector<AnyWithType>& result_)
 {
-	result_.push_back(AnyWithType(e_, "Value"));
+	result_.push_back(AnyWithType(e_, RevPolNotation::Types::VALUE));
 }
 //*///-------------------------------------
 //*///-------------------------------------
-void RevPolNotation::RevPolNotation_Helper::If_Op_Stack_Empty(stack<string>& tmp_stack_, string& oper_)
+void RevPolNotation::RevPolNotation_Parser::If_Op_Stack_Empty(stack<string>& tmp_stack_, string& oper_)
 {
 	tmp_stack_.push(oper_);
 }
 //*///-------------------------------------
 //*///-------------------------------------
-void RevPolNotation::RevPolNotation_Helper::If_Op_Brace_Open(stack<string>& tmp_stack_)
+void RevPolNotation::RevPolNotation_Parser::If_Op_Brace_Open(stack<string>& tmp_stack_)
 {
 	tmp_stack_.push("(");
 }
 //*///-------------------------------------
 //*///-------------------------------------
-void RevPolNotation::RevPolNotation_Helper::If_Op_Brace_Close(stack<string>& tmp_stack_, vector<AnyWithType>& result_)
+void RevPolNotation::RevPolNotation_Parser::If_Op_Brace_Close(stack<string>& tmp_stack_, vector<AnyWithType>& result_)
 {
 
 	/*Extract operations from stack until "(" or stack empty(error)*/
@@ -275,7 +272,7 @@ void RevPolNotation::RevPolNotation_Helper::If_Op_Brace_Close(stack<string>& tmp
 
 	while (last_oper != "(")
 	{
-		result_.push_back(AnyWithType(Operation::Get(last_oper), "Operation"));
+		result_.push_back(AnyWithType(Operation::Get(last_oper), RevPolNotation::Types::OPERATION));
 		tmp_stack_.pop();
 
 		if (tmp_stack_.empty()) throw Except("Bad expression");
@@ -287,28 +284,32 @@ void RevPolNotation::RevPolNotation_Helper::If_Op_Brace_Close(stack<string>& tmp
 }
 //*///-------------------------------------
 //*///-------------------------------------
-void RevPolNotation::RevPolNotation_Helper::If_Op_Other(stack<string>& tmp_stack_, vector<AnyWithType>& result_, string oper_)
+void RevPolNotation::RevPolNotation_Parser::If_Op_Other(stack<string>& tmp_stack_, vector<AnyWithType>& result_, string oper_)
 {
+	/*Init*/
 	unsigned this_priority = Operation::Get(oper_)->Priority();
 	unsigned temp_priority = Operation::Get(tmp_stack_.top())->Priority();
+
+	/*If element on top os stack has priority less then current then push current to stack*/
 	if (temp_priority < this_priority)
 	{
 		tmp_stack_.push(oper_);
 	}
 	else
 	{
+		/*Extract operations from stack  to RPN until meet operation with less priority*/
 		while (!tmp_stack_.empty())
 		{
 			temp_priority = Operation::Get(tmp_stack_.top())->Priority();
 
 			if (temp_priority < this_priority)
 			{
-				result_.push_back(AnyWithType(Operation::Get(oper_), "Operation"));
+				result_.push_back(AnyWithType(Operation::Get(oper_), RevPolNotation::Types::OPERATION));
 				break;
 			}
 			else
 			{
-				result_.push_back(AnyWithType(Operation::Get(tmp_stack_.top()), "Operation"));
+				result_.push_back(AnyWithType(Operation::Get(tmp_stack_.top()), RevPolNotation::Types::OPERATION));
 				tmp_stack_.pop();
 			}
 		}

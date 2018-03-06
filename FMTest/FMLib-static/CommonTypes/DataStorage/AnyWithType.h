@@ -14,7 +14,7 @@ private:
 
 public:
 	
-	enum TypeList { NONE, BOOL, INT, STRING, DOUBLE, OTHER };
+	enum TypeList { NONE, BOOL, INT, STRING, DOUBLE, UNSIGNED, OTHER, MaxType };
 
 	AnyWithType(boost::any data_, std::string type_);
 	AnyWithType(boost::any data_, unsigned type_);

@@ -1,2 +1,5 @@
-*V:a && ( N:b || V:c ) > V:d
-*a b c || d > &&
+*(N:NetReceiver.Port==U:10000)||N:ModemHeaderPleyada.Time!=U:235284270
+*NetReceiver.Port 10000 == ModemHeaderPleyada.Time 235284270 != ||
+
+*S:"aasdasdasd asdasd" && ( N:b || B:true ) > U:10
+*"aasdasdasd asdasd" b 1 || 10 > &&

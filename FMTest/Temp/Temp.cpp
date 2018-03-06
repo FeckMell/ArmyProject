@@ -3,35 +3,22 @@
 
 #include "stdafx.h"
 #include <boost\function.hpp>
+#include <boost\any.hpp>
 using namespace std;
 
-vector<size_t> FindInStrAll(string target_, string what_)
-{
-	vector<size_t> result;
-	if (what_.empty()) return result;
-	size_t length = what_.length();
-	size_t fd = target_.find(what_);
-	while (fd != string::npos)
-	{
-		result.push_back(fd);
-		fd = target_.find(what_, fd + 1);
-	}
-	return result;
-}
-string SubStrFromTo(string target_, size_t from_, size_t to_)
-{
-	if (from_ >= target_.length()) return "";
-	if (from_ >= to_) return "";
-	if (to_>target_.length()) return 	target_.substr(from_);
-	else return target_.substr(from_, to_ - from_);
-}
+//template<class q, class w> boost::function<void(q, w, w)> that;
+
+void use_e(bool& r, unsigned x, unsigned y){	r = (x == y);}
+void use_o(bool& r, bool x, bool y){ r = (x || y); }
+void use_f(bool& r, string x, string y){ r = (x.find(y) != string::npos); }
+
+
 
 int main(int argc, char* argv[])
 {
-	string thatExpressionSTR = "(( ( aa(bb (cc(dd ";
-	cout << SubStrFromTo(thatExpressionSTR, 0, 2);
-
-
+	string s = " ( N:NetReceiver.Port==U:10000)||N:ModemHeaderPleyada.Time!=U:235284270";
+	if (s.front() == ' ') s.erase(s.begin());
+	cout << "_" << s;
 	system("pause");
 	return 0;
 }

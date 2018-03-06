@@ -50,11 +50,15 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>C:\WORK\FMLib\FMLib-static;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -75,27 +79,31 @@
   <ItemGroup>
     <Text Include="ChangeLog.txt" />
     <Text Include="Plans.txt" />
+    <Text Include="TextEdittxt.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Interfaces\STR.h" />
+    <ClInclude Include="Parsers\Other\Army.h" />
     <ClInclude Include="Calculation\Math\Operation.h" />
     <ClInclude Include="Calculation\Math\RevPolNotation.h" />
     <ClInclude Include="CommonTypes\DataStorage\AnyWithType.h" />
     <ClInclude Include="CommonTypes\DataStorage\ValStoreLineT.h" />
     <ClInclude Include="CommonTypes\DataStorage\ValStoreTree.h" />
-    <ClInclude Include="CommonTypes\DataStorage\ValStoreTreeEntry.h" />
     <ClInclude Include="CommonTypes\Except.h" />
     <ClInclude Include="Interfaces\CFG.h" />
     <ClInclude Include="Interfaces\CheckMethod.h" />
     <ClInclude Include="Interfaces\LOG.h" />
     <ClInclude Include="Interfaces\LOG2.h" />
-    <ClInclude Include="Interfaces\Str.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Interfaces\VEC.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Calculation\Math\RevPolNotation_Calc.cpp" />
+    <ClCompile Include="Interfaces\STR.cpp" />
+    <ClCompile Include="Parsers\Other\Army.cpp" />
     <ClCompile Include="Calculation\Math\Operation.cpp" />
     <ClCompile Include="Calculation\Math\RevPolNotation.cpp" />
-    <ClCompile Include="Calculation\Math\RevPolNotation_Helper.cpp" />
+    <ClCompile Include="Calculation\Math\RevPolNotation_Parser.cpp" />
     <ClCompile Include="CommonTypes\DataStorage\AnyWithType.cpp" />
     <ClCompile Include="CommonTypes\DataStorage\ValStoreTree.cpp" />
     <ClCompile Include="CommonTypes\DataStorage\ValStoreTreeEntry.cpp" />
@@ -103,7 +111,6 @@
     <ClCompile Include="Interfaces\CFG.cpp" />
     <ClCompile Include="Interfaces\LOG.cpp" />
     <ClCompile Include="Interfaces\LOG2.cpp" />
-    <ClCompile Include="Interfaces\Str.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

@@ -1,6 +1,6 @@
 #pragma once
 #include "stdafx.h"
-#include "Interfaces/Str.h"
+#include "Interfaces/STR.h"
 
 class ValStoreTree
 {

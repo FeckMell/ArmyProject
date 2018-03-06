@@ -17,6 +17,7 @@
   <ItemGroup>
     <Text Include="ChangeLog.txt" />
     <Text Include="Plans.txt" />
+    <Text Include="TextEdittxt.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -29,9 +30,6 @@
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
     <ClInclude Include="CommonTypes\DataStorage\ValStoreTree.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="CommonTypes\DataStorage\ValStoreTreeEntry.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
     <ClInclude Include="CommonTypes\Except.h">
@@ -49,9 +47,6 @@
     <ClInclude Include="Interfaces\LOG2.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="Interfaces\Str.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
     <ClInclude Include="Calculation\Math\RevPolNotation.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
@@ -59,6 +54,12 @@
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
     <ClInclude Include="CommonTypes\DataStorage\ValStoreLineT.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="Parsers\Other\Army.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="Interfaces\STR.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>
@@ -90,13 +91,19 @@
     <ClCompile Include="Interfaces\LOG2.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
-    <ClCompile Include="Interfaces\Str.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
     <ClCompile Include="Calculation\Math\RevPolNotation.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
-    <ClCompile Include="Calculation\Math\RevPolNotation_Helper.cpp">
+    <ClCompile Include="Parsers\Other\Army.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="Interfaces\STR.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="Calculation\Math\RevPolNotation_Parser.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="Calculation\Math\RevPolNotation_Calc.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
   </ItemGroup>

@@ -16,6 +16,12 @@
     <Filter Include="CommonTypes\DataStorage">
       <UniqueIdentifier>{8358d99f-08a9-4b34-93dd-62ecc2787224}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Parsers">
+      <UniqueIdentifier>{a5903dca-06e4-4148-9bdb-59286be08890}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Parsers\Other">
+      <UniqueIdentifier>{7dbc2699-9d38-4769-8a55-48fc54828de3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -49,6 +55,9 @@
     </ClCompile>
     <ClCompile Include="test_RevPolNotation.cpp">
       <Filter>Calculation</Filter>
+    </ClCompile>
+    <ClCompile Include="test_Army.cpp">
+      <Filter>Parsers\Other</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

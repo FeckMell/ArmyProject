@@ -87,7 +87,7 @@ public:
 	/*Return vector consists of  @target_ splited by @delimeret_
 	if @delimeter_ is "" return empty vector
 	if @delimeter_ not found return vector with one element = @target_*/
-	static std::vector<std::string> StrToVec(std::string target_, std::string delimeter_);
+	static std::vector<std::string> StrToVec(std::string target_, std::string delimeter_); 
 	static std::vector<std::string> StrToVec_M(std::string& target_, std::string& delimeter_);
 	/*Return string as union of @target_ elements
 	if vector empty return ""*/
@@ -102,29 +102,29 @@ public:
 
 	/*Converts std::string to std::wstring */
 	static std::wstring ToWString(std::string s_);
-	static std::wstring ToWString_M(std::string& s_);
+	static std::wstring ToWString_M(const std::string& s_);
 	/*Converts std::wstring to std::string*/
 	static std::string ToString(std::wstring s_);
-	static std::string ToString_M(std::wstring& s_);
+	static std::string ToString_M(const std::wstring& s_);
 
 
 
 
 	/*Return true if string is numeric, return false else*/
 	static bool IsNumeric(std::string str_);
-	static bool IsNumeric_M(std::string& str_);
+	static bool IsNumeric_M(const std::string& str_);
 	/*Return bool if string is int, else throw Except*/
 	static bool ToBool(std::string str_);
-	static bool ToBool_M(std::string& str_);
+	static bool ToBool_M(const std::string& str_);
 	/*Return int if string is int, else throw Except*/
 	static int ToInt(std::string str_);
-	static int ToInt_M(std::string& str_);
+	static int ToInt_M(const std::string& str_);
 	/*Return unsigned if string is int, else throw Except*/
 	static unsigned ToUnsigned(std::string str_);
-	static unsigned ToUnsigned_M(std::string& str_);
+	static unsigned ToUnsigned_M(const std::string& str_);
 	/*Return double if string is int, else throw Except*/
 	static double ToDouble(std::string str_);
-	static double ToDouble_M(std::string& str_);
+	static double ToDouble_M(const std::string& str_);
 
 
 private:
