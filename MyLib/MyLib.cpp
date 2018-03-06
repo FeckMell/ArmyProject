@@ -11,19 +11,25 @@
 #include "ValStoreLine.h"
 #include "ValStoreLineT.h"
 #include "RevPolNotation.h"
-//#include "Evulation2.h"
-//#include "Operation.h"
+#include "Evulation.h"
+#include "Operation.h"
 
 using namespace std;
-
 
 int main()
 {
 	setlocale(LC_ALL, "Russian");
 	string exit;
 	int i = 4;
-	//auto o = Operation::Get("==");
-	
+	string op_name = "contains";
+	string par1 = "hsjkfyf1123";
+	string par2 = "jkf";
+	bool par3 = true;
+	int par4 = 112;
+	auto o = Operation::Get(op_name);
+	auto or = Evulation::UseB(par1, par2, o);
+	cout << "\n" << or;
+	 
 	
 	/*RevPolNotation::Init();
 	string s = "aaa != (bb>=c <=f>= h) contains g";

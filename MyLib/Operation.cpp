@@ -33,55 +33,55 @@ Operation::Operation(std::string symbol_) : thatSymbol(symbol_)
 	{
 		thatPriority = 3;
 		thatBinary = true;
-		thatId = typeid(Operation::EQ).hash_code();
+		thatId = EQ;
 	}
 	else if ( symbol_ == "!=" )
 	{
 		thatPriority = 3;
 		thatBinary = true;
-		thatId = typeid(Operation::NEQ).hash_code();
+		thatId = NEQ;
 	}
 	else if ( symbol_ == ">=" )
 	{
 		thatPriority = 3;
 		thatBinary = true;
-		thatId = typeid(Operation::GE).hash_code();
+		thatId = GE;
 	}
 	else if ( symbol_ == "<=" )
 	{
 		thatPriority = 3;
 		thatBinary = true;
-		thatId = typeid(Operation::LE).hash_code();
+		thatId = LE;
 	}
 	else if ( symbol_ == ">" )
 	{
 		thatPriority = 3;
 		thatBinary = true;
-		thatId = typeid(Operation::G).hash_code();
+		thatId = G;
 	}
 	else if ( symbol_ == "<" )
 	{
 		thatPriority = 3;
 		thatBinary = true;
-		thatId = typeid(Operation::L).hash_code();
+		thatId = L;
 	}
 	else if ( symbol_ == "&&" )
 	{
 		thatPriority = 2;
 		thatBinary = true;
-		thatId = typeid(Operation::AND).hash_code();
+		thatId = AND;
 	}
 	else if ( symbol_ == "||" )
 	{
 		thatPriority = 2;
 		thatBinary = true;
-		thatId = typeid(Operation::OR).hash_code();
+		thatId = OR;
 	}
 	else if ( symbol_ == "^^" )
 	{
 		thatPriority = 2;
 		thatBinary = true;
-		thatId = typeid(Operation::NEQ).hash_code();
+		thatId = NEQ;
 	}
 	/*else if ( symbol_ == "!" )
 	{
@@ -98,7 +98,7 @@ Operation::Operation(std::string symbol_) : thatSymbol(symbol_)
 	{
 		thatPriority = 3;
 		thatBinary = true;
-		thatId = typeid(Operation::CONTAINS).hash_code();
+		thatId = CONTAINS;
 	}
 	else if ( symbol_ == "(" )
 	{
@@ -117,7 +117,7 @@ Operation::Operation(std::string symbol_) : thatSymbol(symbol_)
 //*///------------------------------------------------------------------------------------------
 bool Operation::EQ::Use(const string& x, const int& y) { return x == std::to_string(y); }
 bool Operation::EQ::Use(const string& x, const bool& y) { return STR::ToBool(x) == y; }
-bool Operation::EQ::Use(const string& x, string& y) { return x == y; }
+bool Operation::EQ::Use(const string& x, const string& y) { return x == y; }
 bool Operation::EQ::Use(const bool& x, const int& y) { return x == bool(y); }
 bool Operation::EQ::Use(const bool& x, const bool& y) { return x == y; }
 bool Operation::EQ::Use(const bool& x, const string& y) { return x == STR::ToBool(y); }
@@ -129,7 +129,7 @@ bool Operation::EQ::Use(const int& x, const string& y) { return to_string(x) == 
 //*///------------------------------------------------------------------------------------------
 bool Operation::NEQ::Use(const string& x, const int& y) { return x != std::to_string(y); }
 bool Operation::NEQ::Use(const string& x, const bool& y) { return STR::ToBool(x) != y; }
-bool Operation::NEQ::Use(const string& x, string& y) { return x != y; }
+bool Operation::NEQ::Use(const string& x, const string& y) { return x != y; }
 bool Operation::NEQ::Use(const bool& x, const int& y) { return x != bool(y); }
 bool Operation::NEQ::Use(const bool& x, const bool& y) { return x != y; }
 bool Operation::NEQ::Use(const bool& x, const string& y) { return x != STR::ToBool(y); }
@@ -141,7 +141,7 @@ bool Operation::NEQ::Use(const int& x, const string& y) { return to_string(x) !=
 //*///------------------------------------------------------------------------------------------
 bool Operation::GE::Use(const string& x, const int& y) { return STR::ToInt(x) >= y; }
 bool Operation::GE::Use(const string& x, const bool& y) { return STR::ToBool(x) >= y; }
-bool Operation::GE::Use(const string& x, string& y) { return STR::ToInt(x) >= STR::ToInt(y); }
+bool Operation::GE::Use(const string& x, const string& y) { return STR::ToInt(x) >= STR::ToInt(y); }
 bool Operation::GE::Use(const bool& x, const int& y) { return x >= bool(y); }
 bool Operation::GE::Use(const bool& x, const bool& y) { return x >= y; }
 bool Operation::GE::Use(const bool& x, const string& y) { return x >= STR::ToBool(y); }
@@ -153,7 +153,7 @@ bool Operation::GE::Use(const int& x, const string& y) { return x >= STR::ToInt(
 //*///------------------------------------------------------------------------------------------
 bool Operation::LE::Use(const string& x, const int& y)  { return STR::ToInt(x) <= y; }
 bool Operation::LE::Use(const string& x, const bool& y) { return STR::ToBool(x) <= y; }
-bool Operation::LE::Use(const string& x, string& y)     { return STR::ToInt(x) <= STR::ToInt(y); }
+bool Operation::LE::Use(const string& x, const string& y)     { return STR::ToInt(x) <= STR::ToInt(y); }
 bool Operation::LE::Use(const bool& x, const int& y)    { return x <= bool(y); }
 bool Operation::LE::Use(const bool& x, const bool& y)   { return x <= y; }
 bool Operation::LE::Use(const bool& x, const string& y) { return x <= STR::ToBool(y); }
@@ -165,7 +165,7 @@ bool Operation::LE::Use(const int& x, const string& y)  { return x <= STR::ToInt
 //*///------------------------------------------------------------------------------------------
 bool Operation::G::Use(const string& x, const int& y) { return STR::ToInt(x) > y; }
 bool Operation::G::Use(const string& x, const bool& y) { return STR::ToBool(x) > y; }
-bool Operation::G::Use(const string& x, string& y) { return STR::ToInt(x) > STR::ToInt(y); }
+bool Operation::G::Use(const string& x, const string& y) { return STR::ToInt(x) > STR::ToInt(y); }
 bool Operation::G::Use(const bool& x, const int& y) { return x > bool(y); }
 bool Operation::G::Use(const bool& x, const bool& y) { return x > y; }
 bool Operation::G::Use(const bool& x, const string& y) { return x > STR::ToBool(y); }
@@ -177,7 +177,7 @@ bool Operation::G::Use(const int& x, const string& y) { return x > STR::ToInt(y)
 //*///------------------------------------------------------------------------------------------
 bool Operation::L::Use(const string& x, const int& y) { return STR::ToInt(x) < y; }
 bool Operation::L::Use(const string& x, const bool& y) { return STR::ToBool(x) < y; }
-bool Operation::L::Use(const string& x, string& y) { return STR::ToInt(x) < STR::ToInt(y); }
+bool Operation::L::Use(const string& x, const string& y) { return STR::ToInt(x) < STR::ToInt(y); }
 bool Operation::L::Use(const bool& x, const int& y) { return x < bool(y); }
 bool Operation::L::Use(const bool& x, const bool& y) { return x < y; }
 bool Operation::L::Use(const bool& x, const string& y) { return x < STR::ToBool(y); }
@@ -189,7 +189,7 @@ bool Operation::L::Use(const int& x, const string& y) { return x < STR::ToInt(y)
 //*///------------------------------------------------------------------------------------------
 bool Operation::AND::Use(const string& x, const int& y) { return STR::ToInt(x) && y; }
 bool Operation::AND::Use(const string& x, const bool& y) { return STR::ToBool(x) && y; }
-bool Operation::AND::Use(const string& x, string& y) { return STR::ToInt(x) && STR::ToInt(y); }
+bool Operation::AND::Use(const string& x, const string& y) { return STR::ToInt(x) && STR::ToInt(y); }
 bool Operation::AND::Use(const bool& x, const int& y) { return x && bool(y); }
 bool Operation::AND::Use(const bool& x, const bool& y) { return x && y; }
 bool Operation::AND::Use(const bool& x, const string& y) { return x && STR::ToBool(y); }
@@ -201,7 +201,7 @@ bool Operation::AND::Use(const int& x, const string& y) { return x && STR::ToInt
 //*///------------------------------------------------------------------------------------------
 bool Operation::OR::Use(const string& x, const int& y) { return STR::ToInt(x) || y; }
 bool Operation::OR::Use(const string& x, const bool& y) { return STR::ToBool(x) || y; }
-bool Operation::OR::Use(const string& x, string& y) { return STR::ToInt(x) || STR::ToInt(y); }
+bool Operation::OR::Use(const string& x, const string& y) { return STR::ToInt(x) || STR::ToInt(y); }
 bool Operation::OR::Use(const bool& x, const int& y) { return x || y; }
 bool Operation::OR::Use(const bool& x, const bool& y) { return x || y; }
 bool Operation::OR::Use(const bool& x, const string& y) { return x || STR::ToBool(y); }
@@ -212,7 +212,7 @@ bool Operation::OR::Use(const int& x, const string& y) { return x || STR::ToInt(
 /* CONTAINS */
 //*///------------------------------------------------------------------------------------------
 bool Operation::CONTAINS::Use(const string& x, const int& y) { return x.find(to_string(y)) != string::npos; }
-bool Operation::CONTAINS::Use(const string& x, string& y) { return x.find(y) != string::npos; }
+bool Operation::CONTAINS::Use(const string& x, const string& y) { return x.find(y) != string::npos; }
 bool Operation::CONTAINS::Use(const int& x, const int& y) { return to_string(x).find(to_string(y)) != string::npos; }
 bool Operation::CONTAINS::Use(const int& x, const string& y) { return to_string(x).find(y) != string::npos; }
 //*///------------------------------------------------------------------------------------------

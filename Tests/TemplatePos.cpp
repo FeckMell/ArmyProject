@@ -35,7 +35,7 @@ int main()
 	int exit;
 	
 	T* t = T::Set(99);
-	cout << t->Get();
+	cout << t->Get(); 
 	
 	cin >> exit;
 	return 0;

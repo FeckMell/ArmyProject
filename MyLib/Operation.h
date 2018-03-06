@@ -19,7 +19,7 @@ public:
 	public:
 		static bool Use(const std::string& x, const int& y);
 		static bool Use(const std::string& x, const bool& y);
-		static bool Use(const std::string& x, std::string& y);
+		static bool Use(const std::string& x, const std::string& y);
 
 		static bool Use(const bool& x, const int& y);
 		static bool Use(const bool& x, const bool& y);
@@ -35,7 +35,7 @@ public:
 	public:
 		static bool Use(const std::string& x, const int& y);
 		static bool Use(const std::string& x, const bool& y);
-		static bool Use(const std::string& x, std::string& y);
+		static bool Use(const std::string& x, const std::string& y);
 								
 		static bool Use(const bool& x, const int& y);
 		static bool Use(const bool& x, const bool& y);
@@ -51,7 +51,7 @@ public:
 	public:
 		static bool Use(const std::string& x, const int& y);
 		static bool Use(const std::string& x, const bool& y);
-		static bool Use(const std::string& x, std::string& y);
+		static bool Use(const std::string& x, const std::string& y);
 
 		static bool Use(const bool& x, const int& y);
 		static bool Use(const bool& x, const bool& y);
@@ -67,7 +67,7 @@ public:
 	public:
 		static bool Use(const std::string& x, const int& y);
 		static bool Use(const std::string& x, const bool& y);
-		static bool Use(const std::string& x, std::string& y);
+		static bool Use(const std::string& x, const std::string& y);
 
 		static bool Use(const bool& x, const int& y);
 		static bool Use(const bool& x, const bool& y);
@@ -83,7 +83,7 @@ public:
 	public:
 		static bool Use(const std::string& x, const int& y);
 		static bool Use(const std::string& x, const bool& y);
-		static bool Use(const std::string& x, std::string& y);
+		static bool Use(const std::string& x, const std::string& y);
 
 		static bool Use(const bool& x, const int& y);
 		static bool Use(const bool& x, const bool& y);
@@ -99,7 +99,7 @@ public:
 	public:
 		static bool Use(const std::string& x, const int& y);
 		static bool Use(const std::string& x, const bool& y);
-		static bool Use(const std::string& x, std::string& y);
+		static bool Use(const std::string& x, const std::string& y);
 
 		static bool Use(const bool& x, const int& y);
 		static bool Use(const bool& x, const bool& y);
@@ -115,7 +115,7 @@ public:
 	public:
 		static bool Use(const std::string& x, const int& y);
 		static bool Use(const std::string& x, const bool& y);
-		static bool Use(const std::string& x, std::string& y);
+		static bool Use(const std::string& x, const std::string& y);
 
 		static bool Use(const bool& x, const int& y);
 		static bool Use(const bool& x, const bool& y);
@@ -131,7 +131,7 @@ public:
 	public:
 		static bool Use(const std::string& x, const int& y);
 		static bool Use(const std::string& x, const bool& y);
-		static bool Use(const std::string& x, std::string& y);
+		static bool Use(const std::string& x, const std::string& y);
 
 		static bool Use(const bool& x, const int& y);
 		static bool Use(const bool& x, const bool& y);
@@ -146,15 +146,15 @@ public:
 	{
 	public:
 		static bool Use(const std::string& x, const int& y);
-		static bool Use(const std::string& x, const bool& y);
-		static bool Use(const std::string& x, std::string& y);
+		//static bool Use(const std::string& x, const bool& y);
+		static bool Use(const std::string& x, const std::string& y);
 
-		static bool Use(const bool& x, const int& y);
-		static bool Use(const bool& x, const bool& y);
-		static bool Use(const bool& x, const std::string& y);
+		//static bool Use(const bool& x, const int& y);
+		//static bool Use(const bool& x, const bool& y);
+		//static bool Use(const bool& x, const std::string& y);
 
 		static bool Use(const int& x, const int& y);
-		static bool Use(const int& x, const bool& y);
+		//static bool Use(const int& x, const bool& y);
 		static bool Use(const int& x, const std::string& y);
 	};
 	//*///------------------------------------------------------------------------------------------
@@ -174,7 +174,7 @@ public:
 		static bool Use(const int& x, const std::string& y);
 	};*/
 
-	
+	enum OpID { EQ, NEQ, GE, LE, G, L, AND, OR, CONTAINS };
 private:
 
 	Operation(std::string symbol_);

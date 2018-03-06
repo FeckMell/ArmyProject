@@ -6,7 +6,7 @@ template<class _T> class ValStoreLineT
 {
 private:
 
-	typedef ValStoreLineT VSLT;
+	//typedef ValStoreLineT VSLT;
 	typedef std::string string;
 
 	void SetSubNames(string name_);
@@ -24,8 +24,8 @@ public:
 	void SetVal(string name_, _T val_);
 	void DelVal(string name_);
 
-	VSLT ValSubTree(string name_);
-	void SetValSubTree(string name_, VSLT val_);
+	ValStoreLineT<_T> ValSubTree(string name_);
+	void SetValSubTree(string name_, ValStoreLineT<_T> val_);
 	void DelValSubTree(string name_);
 };
 

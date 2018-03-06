@@ -1,5 +1,6 @@
 #pragma once
 #include "stdafx.h"
+
 class AnyWithType
 {
 private:
@@ -12,7 +13,7 @@ private:
 	unsigned thatDataTypeU = 0;
 
 public:
-
+	
 	enum TypeList { NONE, BOOL, INT, STRING, DOUBLE, OTHER };
 
 	AnyWithType(boost::any data_, std::string type_);
