@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="MAIN">
+      <UniqueIdentifier>{e22e0ff7-086f-48d9-af5b-318b6d925451}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommonTypes">
+      <UniqueIdentifier>{4816c7f6-7e9e-4166-acbe-a37121fc74d6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>MAIN</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonTypes\Except.h">
+      <Filter>CommonTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Interfaces\CFG.h" />
+    <ClInclude Include="Interfaces\CheckMethod.h" />
+    <ClInclude Include="Interfaces\LOG.h" />
+    <ClInclude Include="Interfaces\LOG2.h" />
+    <ClInclude Include="CommonTypes\DataStorage\AnyWithType.h">
+      <Filter>CommonTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonTypes\DataStorage\StringWithType.h">
+      <Filter>CommonTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonTypes\DataStorage\ValStoreLineT.h" />
+    <ClInclude Include="CommonTypes\DataStorage\ValStoreTree.h" />
+    <ClInclude Include="Interfaces\Str.h">
+      <Filter>CommonTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonTypes\DataStorage\ValStoreTreeEntry.h" />
+    <ClInclude Include="Calculation\Math\Operation.h" />
+    <ClInclude Include="CommonTypes\DataStorage\ValStoreLineTnew.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>MAIN</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonTypes\Except.cpp">
+      <Filter>CommonTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Interfaces\CFG.cpp" />
+    <ClCompile Include="Interfaces\LOG.cpp" />
+    <ClCompile Include="Interfaces\LOG2.cpp" />
+    <ClCompile Include="CommonTypes\DataStorage\AnyWithType.cpp">
+      <Filter>CommonTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonTypes\DataStorage\StringWithType.cpp">
+      <Filter>CommonTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonTypes\DataStorage\ValStoreTree.cpp" />
+    <ClCompile Include="CommonTypes\DataStorage\ValStoreTreeEntry.cpp" />
+    <ClCompile Include="Interfaces\Str.cpp">
+      <Filter>CommonTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Calculation\Math\Operation.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt">
+      <Filter>MAIN</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

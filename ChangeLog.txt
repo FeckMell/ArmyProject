@@ -1,0 +1,5 @@
+2017.11.9
+*ValStoreLineTnew
+	1) rewriten methods
+	2) vector persists
+	3) throw exception

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="MAIN">
+      <UniqueIdentifier>{0ed1d432-d314-4087-b573-af69d8697e2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{18c93132-3f50-4a4b-add9-7fb116058343}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>MAIN</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>MAIN</Filter>
+    </ClInclude>
+    <ClInclude Include="Tools\Tools.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>MAIN</Filter>
+    </ClCompile>
+    <ClCompile Include="test_STR.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Tools\Tools.cpp" />
+    <ClCompile Include="test_Except.cpp" />
+    <ClCompile Include="test_ValStoreLineT.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TestData\Except\test1.txt" />
+    <Text Include="TestData\ValStoreLineT\Constructor.txt" />
+  </ItemGroup>
+</Project>
