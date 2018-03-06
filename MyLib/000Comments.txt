@@ -1,0 +1,20 @@
+2017.09.4
+*LOG
+	1) Changed to use TreeVallStore
+	2) New param names
+*LOG2
+	1) Init not done
+*CFG
+	1) Now parse empty params such as: "param="
+	
+	
+	
+2017.08.18
+* Added comments and small corrections to STR static class
+* Finished base of ValStoreTree
+* ValStoreTree added:
+	1) ToString
+* CFG 
+	1) rewritten with ValStoreTree as param keeper
+	2) changed regex template from (R"((\w+)=(\S+))") to string split on "="
+	3) Added InitWithDefaults

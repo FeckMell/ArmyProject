@@ -15,6 +15,7 @@ private:
 public:
 	///**/void SetName(string name_) { thatName = name_; }
 	/**/string NodeName() { return thatName; }
+	string ToString(string path_);
 	string PrintAll(unsigned lvl_);
 
 	ValStoreTreeEntry() {}

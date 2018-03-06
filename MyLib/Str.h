@@ -86,4 +86,5 @@ private:
 
 	STR(){}
 	~STR(){}
+
 };

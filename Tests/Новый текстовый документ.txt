@@ -1,0 +1,60 @@
+class TMPLT
+{
+public:
+	static char* GetTemplateBase(boost::any);
+	static int GetIndexHash(boost::any, boost::any);
+	static unsigned ComplexComb(boost::any, boost::any, boost::any);
+};
+class C
+{
+public:
+	void init(string _msg, bool _isText);
+	void doit();
+private:
+
+	vector<boost::function<void()>> funcs;
+	string s = "string in class";
+};
+
+void C::init(string _msg, bool _isText )
+{
+	vector<boost::function<string(string, bool, boost::any)>> vecFuncs_;
+	for ( auto& entry : _msg )
+	{
+		vecFuncs_.push_back(
+			[&]{
+			string result = "";
+			if ( !(_isText && &entry != "\n") )
+			{
+				boost::any template_ = std::regex(TMPLT::GetTemplateBase(entry));
+				std::cmatch results;
+				regex_match(_msg.c_str(), results, boost::any_cast<std::regex>(template_));
+				for ( unsigned i = 3;
+					i < results.size() && i != results.length();
+					i = TMPLT::ComplexComb(template_, _isText, i) )
+				{
+					result += results.str(i + entry % results.max_size());
+				}
+			}
+			else
+			{
+				boost::any template_ = std::regex(TMPLT::GetTemplateBase(_msg.begin()));
+				std::cmatch results;
+				regex_match(_msg.c_str(), results, boost::any_cast<std::regex>(template_));
+				for ( unsigned i = 3;
+					i < results.size() && i != results.length();
+					i = TMPLT::ComplexComb(template_, _isText, i) )
+				{
+					result += results.str(i + entry % results.max_size());
+				}
+			}
+			return result;
+		});
+	}
+	
+}
+void C::doit()
+{
+	for ( auto & e : funcs )
+		e();
+}

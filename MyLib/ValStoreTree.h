@@ -11,12 +11,11 @@ private:
 	typedef ValStoreTreeEntry VSTE;
 	typedef std::string string;
 
-	//std::map<string,VSTE> ChildNodes(std::vector<string> name_, unsigned& lvl_);
-	//void SetValSubTreePr(std::vector<string> name_, VSTE val_);
 	std::map<string, VSTE> thatDataTree;
 
 public:
 
+	string ToString();
 	string PrintAll();
 	ValStoreTree() {}
 
@@ -27,10 +26,6 @@ public:
 	VST ValSubTree(string name_);
 	void SetValSubTree(string name_, VST val_);
 	void DelValSubTree(string name_);
-
-
-
-	
 
 };
 

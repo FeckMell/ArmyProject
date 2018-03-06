@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7B372A96-A09F-42BE-B8E9-35F8864320BD}</ProjectGuid>
+    <ProjectGuid>{5363A159-BEC6-4D07-AAA6-C9BECE3E4618}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>MyLib</RootNamespace>
+    <RootNamespace>Tests</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -41,13 +41,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\LIBS\Boost\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\LIBS\Boost\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\LIBS\Boost\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\LIBS\Boost\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\LIBS\ffmpeg-dev\include;C:\LIBS\Boost\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\LIBS\ffmpeg-dev\lib;C:\LIBS\Boost\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -80,39 +78,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="CFG.h" />
-    <ClInclude Include="LOG.h" />
-    <ClInclude Include="LOG2.h" />
-    <ClInclude Include="SocketFuncs.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Str.h" />
-    <ClInclude Include="TCPSocket.h" />
-    <ClInclude Include="TCPSocketBuf.h" />
-    <ClInclude Include="UDPSocket.h" />
-    <ClInclude Include="UDPSocketBuf.h" />
-    <ClInclude Include="ValStoreTree.h" />
-    <ClInclude Include="ValStoreTreeEntry.h" />
+    <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CFG.cpp" />
-    <ClCompile Include="LOG.cpp" />
-    <ClCompile Include="LOG2.cpp" />
-    <ClCompile Include="MyLib.cpp" />
-    <ClCompile Include="SocketFuncs.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Str.cpp" />
-    <ClCompile Include="TCPSocket.cpp" />
-    <ClCompile Include="TCPSocketBuf.cpp" />
-    <ClCompile Include="UDPSocket.cpp" />
-    <ClCompile Include="UDPSocketBuf.cpp" />
-    <ClCompile Include="ValStoreTree.cpp" />
-    <ClCompile Include="ValStoreTreeEntry.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="000Comments.txt" />
+    <ClCompile Include="TemplatePos.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

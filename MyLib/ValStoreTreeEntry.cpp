@@ -10,7 +10,7 @@ string VSTE::PrintAll(unsigned lvl_)
 	string result = thatData;
 	for ( auto&e : thatDataTree )
 	{
-		result += "\n" + space + e.first + "_=" + e.second.PrintAll(lvl_);
+		result += "\n" + space + e.first + "=" + e.second.PrintAll(lvl_);
 	}
 	return result;
 }
@@ -148,6 +148,16 @@ vector<string> VSTE::ChildNodesNames(vector<string> name_, unsigned& lvl_)
 }
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
+string VSTE::ToString(string path_)
+{
+	string result = "";
+
+	if ( !thatData.empty() ) result += path_ + "=" + thatData;
+
+	path_ += ".";
+	for ( auto& e : thatDataTree ) result += e.second.ToString(path_ + e.first);
+	return result;
+}
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------
 //*///------------------------------------------------------------------------------------------

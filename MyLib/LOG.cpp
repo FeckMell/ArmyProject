@@ -14,7 +14,7 @@ void LOG::Init(vector<string> filenames_, SHP_IO io_)
 	_LastDate = to_iso_extended_string(boost::gregorian::day_clock::universal_day());
 	for ( auto& e : _FileNames )
 	{
-		_Files[e].open(CFG::Val("PathLog") + "/" + _LastDate + "_" + e + ".log", ofstream::app);
+		_Files[e].open(CFG::Val("Logs.Path") + "/" + _LastDate + "_" + e + ".log", ofstream::app);
 	}		 
 	if ( io_ == nullptr )
 	{
@@ -37,7 +37,7 @@ void LOG::Log(int lvl_, std::string where_, std::string what_)
 //*///------------------------------------------------------------------------------------------
 void LOG::Write(int lvl_, string where_, string what_)
 {
-	if ( STR::IsNumeric(CFG::Val("LogLevel")) ) { if ( lvl_ <= stoi(CFG::Val("LogLevel")) ) return; }
+	if ( STR::IsNumeric(CFG::Val("Logs.Record.Level.Current")) ) { if ( lvl_ <= stoi(CFG::Val("Logs.Record.Level.Current")) ) return; }
 	CheckDate();
 	string time_stamp = "\n\n" + TimeMS() + " :       ";
 	what_ = time_stamp + what_;
@@ -53,7 +53,7 @@ void LOG::ReinitFiles()
 	for ( auto& e : _FileNames )
 	{
 		_Files[e].close();
-		_Files[e].open(CFG::Val("PathLog") + "/" + _LastDate + "_" + e + ".log", ofstream::app);
+		_Files[e].open(CFG::Val("Logs.Path") + "/" + _LastDate + "_" + e + ".log", ofstream::app);
 	}
 }
 //*///------------------------------------------------------------------------------------------

@@ -1,24 +1,30 @@
 #pragma once
 #include "stdafx.h"
-#include "Str.h"
+#include "ValStoreTree.h"
 
 class CFG
 {
-public:
+private:
 
-	static void Init(std::string path_);
-	static void InitWithDefaults(std::string path_, std::map<std::string, std::string> defaults_);//TODO
-	static std::string Val(std::string name_);
-	static void SetVal(std::string name_, std::string value_);
-	static void SetVal(std::map<std::string, std::string> data_);
-	static std::string ToStringAll();
+	typedef std::string string;
 
-protected:
+	CFG() {}
+	~CFG() {}
 
-	static void ParseExtra();//TODO
+	static void ParseExtra();
 	static void ParsePath();
 	static void Parse();
 
-	static std::map<std::string, std::string> thatDataMap;
+	static ValStoreTree thatData;
+
+public:
+
+	static void Init(string path_);
+	static void InitWithDefaults(string path_, std::map<string, string> defaults_);
+	static string Val(string name_);
+	static void SetVal(string name_, string value_);
+	static void SetVal(std::map<std::string, string> data_);
+	static string ToString();
 
 };
+
